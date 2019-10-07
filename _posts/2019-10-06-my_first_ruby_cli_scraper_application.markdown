@@ -38,6 +38,8 @@ This is were I made my mistake, I wanted to get started coding so I just got sta
 
 Next I started by creating a new repo on Github and then getting the general structure I would be using from Bundler by running this command `bundle gem event_finder`.  It creates the files/folders [shown here](https://drive.google.com/open?id=1DJmMK86bSK0-XoYZ2SJDZg33hjgscrMi).
 
+![Default File Structure](https://i.ibb.co/bBFMKyB/bundle-gem-structure.png)
+
 ### Initialize git 
 
   ```git init```
