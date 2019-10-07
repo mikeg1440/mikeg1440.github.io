@@ -1,22 +1,58 @@
-# Site settings
-author: Michael Gaudreau
-title: Code Compendium
-header-img: img/home-bg.png
-email: gaudreaum01@gmail.com
-copyright_name: Michael Gaudreau
-description: > # this means to ignore newlines until "baseurl:"
-  Turning data into information
-baseurl: "" # the subpath of your site, e.g. /blog
-twitter_username: 
-github_username:  mikeg1440
+layout: sidebar
+style: light
 
-# Build settings
-markdown: kramdown
-highlighter: rouge
-permalink: pretty
-paginate: 5
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+plugins:
+  - jekyll-octicons
+  - jekyll-github-metadata
+  - jemoji
 
-gems: [jekyll-paginate, jekyll-feed]
+permalink: /:year/:month/:day/:title/
 
-theme: jekyll-theme-hacker
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts"
+    values:
+      layout: "post"
+
+projects:
+  sort_by: pushed
+  # sort_by options:
+  #   - pushed
+  #   - stars
+  limit: 9
+  exclude:
+    archived: false
+    forks: true
+    projects:
+    # - repo-name
+
+# social_media:
+  # behance: your_username
+  # dribbble: your_username
+  # facebook: your_username
+  # hackerrank: your_username
+  # instagram: your_username
+  # keybase: your_username
+  # linkedin: your_username
+  # mastodon: your_username
+  # medium: your_username
+  # stackoverflow: your_user_id
+  # telegram: your_username
+  # twitter: your_username
+  # unsplash: your_username
+  # vk: your_username
+  # website: http://your_website_url
+  # youtube: your_username
+
+topics:
+  - name: CSS
+    web_url: https://github.com/topics/css
+    image_url: https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/css/css.png
+
+  - name: Web design
+
+  - name: Sass
+    web_url: https://github.com/topics/sass
+    image_url: https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/sass/sass.png
