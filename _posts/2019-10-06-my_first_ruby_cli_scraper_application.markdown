@@ -7,8 +7,8 @@ permalink:  my_first_ruby_cli_scraper_application
 
 
 I'm currently at the end of my fourth week at Flatiron Coding School and the project for this week was to create a CLI Data Gem as a portfolio project.  I ended creating two different apps but only because I wanted to make something a little bit more useful after finishing most of the first program.  This is a short walkthrough of what I did to start the application, hopeful you can pick something new up or least learn from my frustrations.
-
-I will be adding to this post over time so it may be incomplete at the time of reading but I wanted to get some usefull info out there that I will be able to refer back to myself.
+![FreelancerFinder Menu](https://i.ibb.co/N6v8ffq/freelancer-finder-menu.png)
+This is the menu of the application I created last but first I will go through the first application.  I will be adding to this post over time so it may be incomplete at the time of reading but I wanted to get some usefull info out there that I will be able to refer back to myself.
 
 ## General Requirements  
  - Provide a CLI interface 
