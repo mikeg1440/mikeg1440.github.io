@@ -6,9 +6,9 @@ permalink:  my_first_ruby_cli_scraper_application
 ---
 
 
-I'm currently at the end of my fourth week at Flatiron Coding School and the project for this week was to create a CLI Data Gem as a portfolio project.  I ended creating two different apps but only because I wanted to make something a little bit more useful after finishing most of the first program.  This is a short walkthrough of what I did to start the application, hopeful you can pick something new up or least learn from my frustrations.
+I'm currently at the end of my fourth week at Flatiron Coding School and the project for this week was to create a CLI Data Gem as a portfolio project.  I ended creating two different apps but only because I wanted to make something a little bit more useful after finishing most of the first program.  This is a short walk-through of what I did to start the application, hopeful you can pick something new up or least learn from my frustrations.
 ![FreelancerFinder Menu](https://i.ibb.co/N6v8ffq/freelancer-finder-menu.png)
-This is the menu of the application I created last but first I will go through the first application.  I will be adding to this post over time so it may be incomplete at the time of reading but I wanted to get some usefull info out there that I will be able to refer back to myself.
+This is the menu of the application I created last but I want to go through the first application I coded because I think I can point out somethings that others might find useful that I wish I had thought of.  I will be adding to this post over time so it may be incomplete at the time of reading but I wanted to get some useful info out there that I will be able to refer back to myself.
 
 ## General Requirements  
  - Provide a CLI interface
@@ -111,7 +111,7 @@ At this point we should be able to run `bundle install` to install the correct g
 
 I started out by just creating the methods that I wanted to be able to call and how I wanted the flow of the program
 to go from start to finish as I imagined the finished program.  I did this for each class, creating methods like
-`show_menu` and `scrape_events`.  Then I started with the smaller classes and thought of all the attributes the class could have and created attribute accessors for them and created the base initialize methods.  From here I coded the starting logic of the CLI class and pry'ed into the the program after I scraped the document and while looking at the sites HTML using Chrome's Dev Tools I found the CSS selectors for each of the pieces of info I wanted from the main page.  Using the information I created a instance of event class for each event scraped.
+`show_menu` and `scrape_events`.  Then I started with the smaller classes and thought of all the attributes the class could have and created attribute accessors for them and created the base initialize methods.  From here I coded the starting logic of theCLI class and pry'ed into the the program after I scraped the document and while looking at the sites HTML using Chrome's Dev Tools I found the CSS selectors for each of the pieces of info I wanted from the main page.  Using the information I created a instance of event class for each event scraped.
 
 
 
