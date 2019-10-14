@@ -107,6 +107,14 @@ spec.add_dependency "nokogiri"
 
 At this point we should be able to run `bundle install` to install the correct gems and allow us to run the executable.  If we comment out the `EventFinder::CLI.new.call` line and put a simple `puts "hello world` in our `lib/event_finder/cli.rb` file then run `./bin/event_finder` we should see "hello world" in the terminal output.
 
+### Don't forget to git commit
+
+  Version control is a hugely helpful tool when used correctly while coding but is important that you do a few things.  The first thing is commit often, any time you add a new feature, method, or fix you should commit.  Also make sure to add a message that makes sense for what your changes are, so if you can read your git log like this "if you apply this change(commit) it will do this".  I like to only use a few category words to start mine off with so if I add a new feature my commit message looks something like this 'Feat find specific instance by id' or for a fix 'Fix error thrown when scraping page X'.  Also I'm trying to get in the habit of creating branches for when I start on implementing a big change to the program so that I can fall back to the last good working version easily if I end up needing to.  
+
+### Planning class functionality
+
+  This is where I could have taken a little bit more time at the start and it would have saved me allot of work refactoring and DRYing out the code towards the end.  I think the best way to do this is just create the methods that you think would make the most sense for what your trying to do keeping in mind the [SOLID](http://wall-skills.com/2013/solid-principles-for-maintainable-oo-code/) principles as well as DRY(Don't Repeat Yourself).   
+
 ### Creating the classes
 
 I started out by just creating the methods that I wanted to be able to call and how I wanted the flow of the program

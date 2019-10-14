@@ -1,0 +1,188 @@
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html class="min-height-full">
+  <head>
+    <meta charset="utf-8">
+    <title>My First Ruby CLI Scraper Application</title>
+    <meta name="description" content="I’m currently at the end of my fourth week at Flatiron Coding School and the project for this week was to create a CLI Data Gem as a portfolio project.  I ended creating two different apps but only because I wanted to make something a little bit more useful after finishing most of the first progr..." />
+    <meta property="og:title" content="" />
+    <meta property="og:image" content="https://avatars2.githubusercontent.com/u/54196703?v=4" />
+    <meta property="og:description" content="I’m currently at the end of my fourth week at Flatiron Coding School and the project for this week was to create a CLI Data Gem as a portfolio project.  I ended creating two different apps but only because I wanted to make something a little bit more useful after finishing most of the first progr..." />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css">
+  </head>
+  <body class="bg-white min-height-full" style="background-color: #2f363d !important">
+
+
+
+
+
+  <div class="d-md-flex min-height-full ">
+    <div class="flex-self-stretch bg-gray-dark col-md-5 col-lg-4 col-xl-3 px-4 px-md-6 px-lg-7 py-6">
+      
+
+<img src="https://avatars2.githubusercontent.com/u/54196703?v=4" class="circle mb-3" style="max-width: 150px;">
+<h1 class="text-white mb-2 lh-condensed">mikeg1440</h1>
+<p class="mb-3 f4 text-white">
+  
+</p>
+
+
+  <div class="f4 mb-6">
+    
+    
+    
+    
+    
+  </div>
+
+
+    </div>
+
+    <div class="col-md-7 col-lg-8 col-xl-9 px-4 py-6 px-lg-7 border-top border-md-top-0 bg-gray-light" style="background-color: #2f363d !important">
+      <div class="mx-auto" style="max-width: 900px;">
+        <div class="f4 text-white mb-6">
+          <div class="f4 text-white">
+            <p class="f5"><a href="http://localhost:4000/" class="d-flex flex-items-center text-white"><svg height="16" class="octicon octicon-chevron-left mr-2 v-align-middle" fill="#ffffff" aria-label="Home" viewBox="0 0 8 16" version="1.1" width="8" role="img"><path fill-rule="evenodd" d="M5.5 3L7 4.5 3.25 8 7 11.5 5.5 13l-5-5 5-5z"/></svg>Home</a></p>
+            <h1 class="f00-light lh-condensed">My First Ruby CLI Scraper Application</h1>
+            <p class="text-white mb-5">Published Oct 06, 2019</p>
+            
+  
+  <div class="article">
+    <p>I’m currently at the end of my fourth week at Flatiron Coding School and the project for this week was to create a CLI Data Gem as a portfolio project.  I ended creating two different apps but only because I wanted to make something a little bit more useful after finishing most of the first program.  This is a short walk-through of what I did to start the application, hopeful you can pick something new up or least learn from my frustrations.
+<img src="https://i.ibb.co/N6v8ffq/freelancer-finder-menu.png" alt="FreelancerFinder Menu" />
+This is the menu of the application I created last but I want to go through the first application I coded because I think I can point out somethings that others might find useful that I wish I had thought of.  I will be adding to this post over time so it may be incomplete at the time of reading but I wanted to get some useful info out there that I will be able to refer back to myself.</p>
+
+<h2 id="general-requirements">General Requirements</h2>
+<ul>
+  <li>Provide a CLI interface</li>
+  <li>Provide data from a site on the internet</li>
+  <li>Data that goes one level deep ( user must be able to choose something and get more details about it)</li>
+  <li>Good Object Oriented Design</li>
+</ul>
+
+<h2 id="specific-requirements">Specific Requirements</h2>
+<ul>
+  <li>A README.md file with the following
+    <ul>
+      <li>Short Description</li>
+      <li>Install Instructions</li>
+      <li>Contributors Guide</li>
+      <li>Link to License for the code</li>
+    </ul>
+  </li>
+  <li>CLI Essentials
+    <ul>
+      <li>CLI for interfacing with application</li>
+      <li>Pulls data from a external source</li>
+      <li>Has both list and detail views</li>
+      <li>Go one level deep</li>
+      <li>Follow DRY(Dont Repeat Yourself) principle</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="planning">Planning</h3>
+
+<p>This is were I made my mistake, I wanted to get started coding so I just got started with the first halfway decent idea I had.  The idea was to use the site <a href="https://10times.com">https://10times.com</a> which displays tech expo events around the world and allows you to click a event and see the details of it.  I thought it was perfect because it was somewhat programming related that I might use once and a while.  So I started out by creating a outline for the program and came up with four classes that I would need.  A CLI class to interact with the user, a Scraper class to scrape the data, a Event class to hold the events and I ended up adding a Location class after starting to code so that it would be easier to find events by their location.</p>
+
+<h3 id="creating-the-application-structure">Creating the application structure</h3>
+
+<p>Next I started by creating a new repo on Github and then getting the general structure I would be using from Bundler by running this command <code class="highlighter-rouge">bundle gem event_finder</code>.  It creates the files/folders <a href="https://drive.google.com/open?id=1DJmMK86bSK0-XoYZ2SJDZg33hjgscrMi">shown here</a>.</p>
+
+<p><img src="https://i.ibb.co/bBFMKyB/bundle-gem-structure.png" alt="Default File Structure" /></p>
+
+<h3 id="initialize-git">Initialize git</h3>
+
+<p><code class="highlighter-rouge">git init</code></p>
+
+<p>This will initialize a git folder and files</p>
+
+<p><code class="highlighter-rouge">git remote add origin https://github.com/git-repo-her</code></p>
+
+<p>This will add the repo you created as the remote origin for the code to push to</p>
+
+<h3 id="create-the-files-we-will-need">Create the files we will need</h3>
+
+<p>Next I created my class files in <code class="highlighter-rouge">/lib</code> and executable file in the <code class="highlighter-rouge">/bin</code> directory</p>
+
+<p><code class="highlighter-rouge">touch lib/event_finder/cli.rb</code></p>
+
+<p><code class="highlighter-rouge">touch lib/event_finder/event.rb</code></p>
+
+<p><code class="highlighter-rouge">touch lib/event_finder/scraper.rb</code></p>
+
+<p><code class="highlighter-rouge">touch lib/event_finder/location.rb</code></p>
+
+<p><code class="highlighter-rouge">touch bin/event_finder</code></p>
+
+<p>Then make out executable actually executable and add a few lines</p>
+
+<p><code class="highlighter-rouge">chmod +x bin/event_finder</code></p>
+
+<p>And inside of <code class="highlighter-rouge">bin/event_finder</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">#!/usr/bin/env ruby</span>
+
+<span class="nb">require_relative</span> <span class="err">'</span><span class="o">..</span><span class="sr">/lib/e</span><span class="n">vent_finder</span><span class="p">.</span><span class="nf">rb</span>
+
+<span class="no">EventFinder</span><span class="o">::</span><span class="no">CLI</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">call</span>
+</code></pre></div></div>
+
+<h3 id="set-up-our-environment-file">Set up our environment file</h3>
+
+<p>Next we need to include our class files in the environment file <code class="highlighter-rouge">lib/event_finder.rb</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>require 'bundler'
+require 'open-uri'
+Bundler.require(:default, :developement)
+
+module EventFinder
+  require_relative '../lib/event_finder/cli'
+  require_relative '../lib/event_finder/event'
+  require_relative '../lib/event_finder/scraper'
+  require_relative '../lib/event_finder/location'
+end
+</code></pre></div></div>
+
+<h3 id="add-our-dependencies">Add our dependencies</h3>
+
+<p>Because we are using Bundler we have a .gemspec file that we need to fill with some information and include our dependencies in as well.  Anything that has a TODO or a FIX will need to be edited to run our program at all so go ahead and fill out all the relevant information.  Next we add the dependencies at the end of the file I added these.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>spec.add_development_dependency "pry"
+
+spec.add_dependency "nokogiri"
+</code></pre></div></div>
+
+<p>At this point we should be able to run <code class="highlighter-rouge">bundle install</code> to install the correct gems and allow us to run the executable.  If we comment out the <code class="highlighter-rouge">EventFinder::CLI.new.call</code> line and put a simple <code class="highlighter-rouge">puts "hello world</code> in our <code class="highlighter-rouge">lib/event_finder/cli.rb</code> file then run <code class="highlighter-rouge">./bin/event_finder</code> we should see “hello world” in the terminal output.</p>
+
+<h3 id="creating-the-classes">Creating the classes</h3>
+
+<p>I started out by just creating the methods that I wanted to be able to call and how I wanted the flow of the program
+to go from start to finish as I imagined the finished program.  I did this for each class, creating methods like
+<code class="highlighter-rouge">show_menu</code> and <code class="highlighter-rouge">scrape_events</code>.  Then I started with the smaller classes and thought of all the attributes the class could have and created attribute accessors for them and created the base initialize methods.  From here I coded the starting logic of theCLI class and pry’ed into the the program after I scraped the document and while looking at the sites HTML using Chrome’s Dev Tools I found the CSS selectors for each of the pieces of info I wanted from the main page.  Using the information I created a instance of event class for each event scraped.</p>
+
+<h3 id="tldr">TL;DR</h3>
+<p>The gist of this article is just how to get started on a ruby CLI gem using Bundler and I will be adding more to the post as I have time.  Next up we will be looking at starting to code our classes as well as then what makes a good website to scrape data from and then how to go about scraping it.</p>
+
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  </body>
+</html>
+
