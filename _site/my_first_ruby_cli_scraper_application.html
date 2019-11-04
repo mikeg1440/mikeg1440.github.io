@@ -33,7 +33,8 @@
 <img src="https://avatars2.githubusercontent.com/u/54196703?v=4" class="circle mb-3" style="max-width: 150px;">
 <h1 class="text-white mb-2 lh-condensed">mikeg1440</h1>
 <p class="mb-3 f4 text-white">
-  
+  Software Engineering Student
+at @flatiron-school
 </p>
 
 
@@ -164,6 +165,14 @@ spec.add_dependency "nokogiri"
 </code></pre></div></div>
 
 <p>At this point we should be able to run <code class="highlighter-rouge">bundle install</code> to install the correct gems and allow us to run the executable.  If we comment out the <code class="highlighter-rouge">EventFinder::CLI.new.call</code> line and put a simple <code class="highlighter-rouge">puts "hello world</code> in our <code class="highlighter-rouge">lib/event_finder/cli.rb</code> file then run <code class="highlighter-rouge">./bin/event_finder</code> we should see “hello world” in the terminal output.</p>
+
+<h3 id="dont-forget-to-git-commit">Don’t forget to git commit</h3>
+
+<p>Version control is a hugely helpful tool when used correctly while coding but is important that you do a few things.  The first thing is commit often, any time you add a new feature, method, or fix you should commit.  Also make sure to add a message that makes sense for what your changes are, so if you can read your git log like this “if you apply this change(commit) it will do this”.  I like to only use a few category words to start mine off with so if I add a new feature my commit message looks something like this ‘Feat find specific instance by id’ or for a fix ‘Fix error thrown when scraping page X’.  Also I’m trying to get in the habit of creating branches for when I start on implementing a big change to the program so that I can fall back to the last good working version easily if I end up needing to.</p>
+
+<h3 id="planning-class-functionality">Planning class functionality</h3>
+
+<p>This is where I could have taken a little bit more time at the start and it would have saved me allot of work refactoring and DRYing out the code towards the end.  I think the best way to do this is just create the methods that you think would make the most sense for what your trying to do keeping in mind the <a href="http://wall-skills.com/2013/solid-principles-for-maintainable-oo-code/">SOLID</a> principles as well as DRY(Don’t Repeat Yourself).</p>
 
 <h3 id="creating-the-classes">Creating the classes</h3>
 
