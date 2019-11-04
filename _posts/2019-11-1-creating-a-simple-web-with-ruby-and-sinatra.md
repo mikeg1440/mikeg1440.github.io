@@ -1,10 +1,16 @@
 ---
 layout: post
 title: 'Setup for a simple web app with Ruby and Sinatra'
-date: '2019-11-1'
+date: '2019-11-1 15:12:11 -0400'
 categories: ruby, sinatra
 ---
-
+<head>
+  <style>
+    a{font-weight: bold;}
+    .highlighter-rouge{background-color: darkgrey; color: black; padding: 1px;}
+    .highlight{color: aliceblue; background:black; padding: 10px;}
+  </style>
+</head>
 <p align="center">
   <img src="https://d1avok0lzls2w.cloudfront.net/img_uploads/sinatra-logo.jpg">
 </p>
