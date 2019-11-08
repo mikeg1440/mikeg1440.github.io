@@ -1,0 +1,127 @@
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html class="min-height-full">
+  <head>
+    <meta charset="utf-8">
+    <title>Hide Learn.co's Sidebar with a Bookmarklet</title>
+    <meta name="description" content="  Just wanted to share this for anyone who had the same thought that I did, you can either manually add a bookmark and paste the following code in or drag and drop the links that are in this text.  For anyone who is not that familiar with bookmarklets you can find some good info HERENOTE I only t..." />
+    <meta property="og:title" content="" />
+    <meta property="og:image" content="https://avatars2.githubusercontent.com/u/54196703?v=4" />
+    <meta property="og:description" content="  Just wanted to share this for anyone who had the same thought that I did, you can either manually add a bookmark and paste the following code in or drag and drop the links that are in this text.  For anyone who is not that familiar with bookmarklets you can find some good info HERENOTE I only t..." />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css">
+  </head>
+  <body class="bg-white min-height-full" style="background-color: #2f363d !important">
+
+
+
+
+
+  <div class="d-md-flex min-height-full ">
+    <div class="flex-self-stretch bg-gray-dark col-md-5 col-lg-4 col-xl-3 px-4 px-md-6 px-lg-7 py-6">
+      
+
+<img src="https://avatars2.githubusercontent.com/u/54196703?v=4" class="circle mb-3" style="max-width: 150px;">
+<h1 class="text-white mb-2 lh-condensed">mikeg1440</h1>
+<p class="mb-3 f4 text-white">
+  Software Engineering Student
+at @flatiron-school
+</p>
+
+
+  <div class="f4 mb-6">
+    
+    
+    
+    
+    
+  </div>
+
+
+    </div>
+
+    <div class="col-md-7 col-lg-8 col-xl-9 px-4 py-6 px-lg-7 border-top border-md-top-0 bg-gray-light" style="background-color: #2f363d !important">
+      <div class="mx-auto" style="max-width: 900px;">
+        <div class="f4 text-white mb-6">
+          <div class="f4 text-white">
+            <p class="f5"><a href="/" class="d-flex flex-items-center text-white"><svg height="16" class="octicon octicon-chevron-left mr-2 v-align-middle" fill="#ffffff" aria-label="Home" viewBox="0 0 8 16" version="1.1" width="8" role="img"><path fill-rule="evenodd" d="M5.5 3L7 4.5 3.25 8 7 11.5 5.5 13l-5-5 5-5z"/></svg>Home</a></p>
+            <h1 class="f00-light lh-condensed">Hide Learn.co's Sidebar with a Bookmarklet</h1>
+            <p class="text-white mb-5">Published Oct 22, 2019</p>
+            
+  
+  <div class="article">
+    <head>
+  <style>
+    a{font-weight: bold;}
+    .highlighter-rouge{ color: black; padding: 1px;background-color: chartreuse;}
+    code {font-size: medium;}
+  </style>
+</head>
+
+<h4 id="just-wanted-to-share-this-for-anyone-who-had-the-same-thought-that-i-did-you-can-either-manually-add-a-bookmark-and-paste-the-following-code-in-or-drag-and-drop-the-links-that-are-in-this-text--for-anyone-who-is-not-that-familiar-with-bookmarklets-you-can-find-some-good-info-here">Just wanted to share this for anyone who had the same thought that I did, you can either manually add a bookmark and paste the following code in or drag and drop the links that are in this text.  For anyone who is not that familiar with bookmarklets you can find some good info <a href="https://repl.it/talk/learn/BOOKMARKLETS/14218">HERE</a></h4>
+
+<p><strong>NOTE</strong> I only tested this on Chromium so it should work on Chrome as well and I’m reasonably certain it will work on Firefox.  The only browser that may not work is Internet Explorer but let’s be honest, IE is a dumpster fire and encourage you to uninstall immediately and choose one of the browsers mentioned above.</p>
+
+<h2 id="hide-the-sidebar">Hide the sidebar</h2>
+
+<p>This is the code to hide the sidebar, it also moves the friends widget over as well.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javascript:(function(){$("section.site-sidebar")[0].style.display="none"; document.getElementById('js--region-main').style.right=0; $("section.site-widget")[0].style.right=0;})();
+</code></pre></div></div>
+
+<h2 id="show-the-hidden-sidebar-again">Show the hidden sidebar again</h2>
+
+<p>To make the sidebar visible again you make another Bookmarklet with this code.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javascript:(function(){$("section.site-sidebar")[0].style.display=""; document.getElementById('js--region-main').style.right="236px"; $("section.site-widget")[0].style.right="263px";})();
+</code></pre></div></div>
+
+<h2 id="add-via-drag-and-drop">Add via Drag and Drop</h2>
+
+<p>To install the bookmarklet via drag and drop then you can follow these steps.</p>
+
+<ol>
+  <li>Make sure your browser displays the bookmark bar
+    - For Google Chrome or Chromium browsers:
+    <ul>
+      <li>press CRTL-Shift-B. The bookmarks bar should appear or disappear immediately;</li>
+      <li>You could also click the options icon on your top right, <img src="https://support.start.me/hc/article_attachments/360002353565/Iopt.PNG" alt="Firefox Menu Button" /> and mouse over to the sixth option ‘Bookmarks’. If you find a checkmark there, you’re all set.
+        <ul>
+          <li>For Firefox, Internet Explorer and Pale Moon users, there is no shortcut available. You can still right-click the certificate in the        address bar, to toggle the bookmarks bar.</li>
+          <li>In Safari you can toggle the Favorites Bar under View &gt; Hide Favorites Bar or by pressing ⇧⌘B.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>After your bookmarks are visible just drag and drop these links to your bookmarks
+    - <a href="javascript:(function(){$(&quot;section.site-sidebar&quot;)[0].style.display=&quot;none&quot;; document.getElementById('js--region-main').style.right=0; $(&quot;section.site-widget&quot;)[0].style.right=0;})();">Hide</a>
+    - <a href="javascript:(function(){$(&quot;section.site-sidebar&quot;)[0].style.display=&quot;&quot;; document.getElementById('js--region-main').style.right=&quot;236px&quot;; $(&quot;section.site-widget&quot;)[0].style.right=&quot;263px&quot;;})();">Show</a></li>
+</ol>
+
+<hr />
+
+<h4 id="i-actually-added-a-folder-and-named-it-flatiron-and-moved-both-show-and-hide-bookmarklets-under-that-so-it-works-like-this">I actually added a folder and Named it Flatiron and moved both <code class="highlighter-rouge">Show</code> and <code class="highlighter-rouge">Hide</code> bookmarklets under that so it works like this.</h4>
+
+<p><img src="https://i.imgur.com/1fvjSPU.gif" alt="Example of how I set up the bookmarklets" /></p>
+
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  </body>
+</html>
+

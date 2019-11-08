@@ -1,5 +1,5 @@
 @import url("https://unpkg.com/primer/build/build.css");
-.highlight { width: 100%; overflow: auto; background: #ffffff; }
+.highlight { color: aliceblue; background: black; padding: 10px; overflow: auto; width: 100%; margin-bottom: 0; }
 
 .highlight .c { color: #999988; font-style: italic; }
 
@@ -193,7 +193,9 @@
 
 .emoji { width: 18px; height: auto; vertical-align: middle; }
 
-.article h1, .article h2, .article h3, .article h4, .article .highlight { margin-bottom: 16px; }
+.article h1, .article h2, .article h3, .article h4, .article .highlight { margin-bottom: 0px; }
+.article h1 { text-align: center; }
+.article h1, .article h2, .article h3, .article h4 { margin-bottom: 16px; margin-top: 16px; }
 .article blockquote { color: #6a737d; border-left: 2px solid #959da5; padding-left: 16px; margin-bottom: 16px; }
 .article ul, .article ol { padding-left: 32px; margin-bottom: 16px; }
 .article li ul, .article li ol { padding-left: 16px; margin-bottom: 0px; }
