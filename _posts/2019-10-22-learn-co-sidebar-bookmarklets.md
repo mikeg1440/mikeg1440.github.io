@@ -51,6 +51,7 @@ javascript:(function(){$("section.site-sidebar")[0].style.display=""; document.g
     - [Hide](javascript:(function(){$("section.site-sidebar")[0].style.display="none"; document.getElementById('js--region-main').style.right=0; $("section.site-widget")[0].style.right=0;})();)
     - [Show](javascript:(function(){$("section.site-sidebar")[0].style.display=""; document.getElementById('js--region-main').style.right="236px"; $("section.site-widget")[0].style.right="263px";})();)
 
+### And that's it!  Just goto any learn page that has the sidebar and then click the `Hide` bookmark to hide it and the `Show` bookmark to return to normal.  Also you can rename them whatever you like, it doesn't have to be what I choose.
 
 <hr>
 
