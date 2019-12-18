@@ -14,8 +14,7 @@
 - Product
 
 #### This is the diagram for my models
-![Picture of database schema](https://i.imgur.com/u89GruO.png)
-
+  <img src="https://i.imgur.com/u89GruO.png" alt="Picture of database schema" style="width: 100%;">
 ### Set up database
 
   If you have never used a PostgreSQL database before you will need to do a few things first to get started, you can take a look at a guide like this one for [installing PostgreSQL on Ubuntu](https://tecadmin.net/install-postgresql-server-on-ubuntu/).  After installing you will need to set a new password for the database user, you can follow the steps here if you like.
