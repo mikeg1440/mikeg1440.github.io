@@ -1,11 +1,11 @@
 ---
 layout: post
-title: A Look at Named Scopes
+title: A Look at Ruby on Rails Scopes
 date: 2019-12-22 19:31 -0500
 ---
 ## What is scope?
 
-  [Named Scopes](https://api.rubyonrails.org/classes/ActiveRecord/Scoping/Named/ClassMethods.html#method-i-scope) are just methods that you can use to define custom queries inside your Rails models with the `scope` method.  They can be used to grab a subset of objects from your database and are a great way to reduce redundant code as well as long and frequently used queries.  Let's look at an example of a scope method with a name of `most_recent` in a model called `Event`.
+  [Named Scopes](https://api.rubyonrails.org/classes/ActiveRecord/Scoping/Named/ClassMethods.html#method-i-scope) or scopes are just methods that you can use to define custom queries inside your Rails models with the `scope` method.  They can be used to grab a subset of objects from your database and are a great way to reduce redundant code as well as long and frequently used queries.  Let's look at an example of a scope method with a name of `most_recent` in a model called `Event`.
 
   `/app/models/event.rb`
   ```
