@@ -136,3 +136,63 @@ date: 2020-01-19 20:46 -0500
 
   ### Run the local server
   After creating the controller methods we should have a working API that you can use by running the server with `rails server` and then test with something like [Postman](https://www.getpostman.com/downloads/) which is a great free tool to helping you build and test API's.
+
+  ## The front end App
+  Now that we have gotten the API running we can start on the front end of the SPA and for this project I just created a new folder with the name `PollAppFrontEnd` and initialized a git repo inside the folder using `git init`.  From there I set up the following directory structure
+  ```
+  ./
+  ├── index.html
+  ├── css
+  ├── img
+  └── src
+      ├── adapters
+      └── componants
+  ```
+  This gives you a `img` folder for images obviously along with a `css` folder which again is obvious what you put there and in the `src` folder is going to be all of the JavaScript files.  I created a adapters folder for putting the JS code that will be interacting with the API to send GET and POST requests with, and a componants folder for the rest of the JS classes and files.  
+
+  I have decided to write a more extensive post about the front end of the application so for this current post I will only go over the requests used to get/submit the data to/from the API.  There are really on 4 requests(2 GET & 2 POST) we will need to make for this simple SPA and they are
+   - A GET request to `http://localhost:3000/polls` to get all the poll objects that exist currently
+   - A GET request to `http://localhost:3000/polls/:id/submissions` to get all submissions related to poll specified with the `:id` part of the URL.
+   - A POST request to `http://localhost:3000/polls` to create a new poll
+   - A POST request to `http://localhost:3000/submissions` to create a new submission
+
+  You can test this out by just going to any of these URL's with a browser and you should see the JSON object returned inside your main browser window.
+
+  To give you an idea of how you might implement this you can take a look at the code below which is just a class named PollsAdapter that we can use to get and submit requests to the back end API.  You would create a new instance of the class using the code `new PollsAdapter()`.
+  ```
+  class PollsAdapter{
+    constructor(){
+      this.baseUrl = 'http://localhost:3000/polls'
+    }
+
+    getPolls(){
+      return fetch(this.baseUrl).then(resp => resp.json())
+    }
+
+    getSubmissions(pollId){
+      return fetch(`${this.baseUrl}/${pollId}/submissions`).then(resp => resp.json())
+    }
+
+    submitPoll(data){
+      return fetch(this.baseUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then((response) => response.json())
+    }
+
+    submitResponse(data){
+      return fetch(`${this.baseUrl}/${data.poll_id}/submissions`, {
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then( resp => resp.json())
+    }
+  }
+  ```
