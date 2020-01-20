@@ -103,4 +103,36 @@ date: 2020-01-19 20:46 -0500
   end
   ```
 
-  
+  ### Serializers
+
+  To get our API to return only the attributes we want we can use rails serializers.  Since we already added the Serializers gem and ran `bundle install` we can simple create them with generators again.
+  ```
+  rails g serializer  polls
+  rails g serializer submissions
+  ```
+  And then we specify the attributes we want to use within the newly generated files, and we can specify the polls to return the answers along with each poll when its requested so the polls_serializer would look like this.
+  ```
+  class PollSerializer < ActiveModel::Serializer
+    attributes :id, :title, :author, :question, :answers
+  end
+  ```
+  And the submissions serializer
+  ```
+  class SubmissionSerializer < ActiveModel::Serializer
+    attributes :id, :poll_id, :answer_id
+  end
+  ```
+
+  ### Add routes and controller methods
+  So now we have to specify the routes, we can do this easily with by adding the following the `app/config/routes.rb` file and because we don't need all the routes we can specify the ones we want with the `only: []` line
+  ```
+  resources :polls, only: [:index, :create, :show] do
+    resources :submissions, only: [:index, :create]
+  end
+  ```
+  When you put a route within another route like this it means that url will be nested so to reach the polls routes it would be something like `http://localhost:3000/polls` and for the index route and for submissions or a specific poll it would look like `http://localhost:3000/polls/1/submissions` for the index route showing all submissions for the poll with ID of 1.
+
+  Next you would create the corresponding controller methods, I'm not going to review that here but if you want to see an example you can take a look at the [back end repo](https://github.com/mikeg1440/PollAppBackend) to get an idea of what you can do.
+
+  ### Run the local server
+  After creating the controller methods we should have a working API that you can use by running the server with `rails server` and then test with something like [Postman](https://www.getpostman.com/downloads/) which is a great free tool to helping you build and test API's.
