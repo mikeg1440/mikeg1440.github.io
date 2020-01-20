@@ -5,7 +5,7 @@ date: 2020-01-19 20:46 -0500
 ---
 
 ## Intro
-  I recently had to create a [Single Page Application(SPA)](https://en.wikipedia.org/wiki/Single-page_application) that uses a Rails back end for handling and storing data and JavaScript for the front end.  I chose to create a simple poll app that allows users to create a poll that other users can then take and everyone can view the results.  So the examples will be using names based around that kind of application.
+  I recently had to create a [Single Page Application(SPA)](https://en.wikipedia.org/wiki/Single-page_application) that uses a Rails back end for handling and storing data and JavaScript for the front end.  I chose to create a simple poll app that allows users to create a poll that other users can then take and everyone can view the results.  So the examples will be using names based around that kind of application. You can see the code from this project [here](https://github.com/mikeg1440/PollerApp)
 
 ## Getting started
 
