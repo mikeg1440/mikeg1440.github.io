@@ -47,12 +47,14 @@ projects:
   # youtube: your_username
 
 topics:
-  - name: CSS
-    web_url: https://github.com/topics/css
-    image_url: https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/css/css.png
+  - name: Virtualization
+    web_url: https://www.docker.com/
+    image_url: https://www.docker.com/sites/default/files/social/docker_facebook_share.png
 
-  - name: Web design
+  - name: Capture the Flag Challenges
+    web_url: https://www.vulnhub.com/
+    image_url: https://hackt.nl/wp-content/uploads/2018/09/vulnhub-702x336.png
 
-  - name: Sass
-    web_url: https://github.com/topics/sass
-    image_url: https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/sass/sass.png
+  - name: Cyber Security
+    web_url: https://www.cybrary.it/
+    image_url: https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTpdD3MKVKO6qfGY0uXFK9GIAAz0ulN14B3CwwVkUdmBODNitpo
