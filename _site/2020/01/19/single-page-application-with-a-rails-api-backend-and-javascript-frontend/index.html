@@ -1,0 +1,268 @@
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html class="min-height-full">
+  <head>
+    <meta charset="utf-8">
+    <title>Single Page Application with a Rails API backend and JavaScript frontend</title>
+    <meta name="description" content="IntroI recently had to create a Single Page Application(SPA) that uses a Rails back end for handling and storing data and JavaScript for the front end.  I chose to create a simple poll app that allows users to create a poll that other users can then take and everyone can view the results.  So the..." />
+    <meta property="og:title" content="Michael Gaudreau" />
+    <meta property="og:image" content="https://avatars2.githubusercontent.com/u/54196703?v=4" />
+    <meta property="og:description" content="IntroI recently had to create a Single Page Application(SPA) that uses a Rails back end for handling and storing data and JavaScript for the front end.  I chose to create a simple poll app that allows users to create a poll that other users can then take and everyone can view the results.  So the..." />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css">
+  </head>
+  <body class="bg-white min-height-full" style="background-color: #2f363d !important">
+
+
+
+
+
+  <div class="d-md-flex min-height-full ">
+    <div class="flex-self-stretch bg-gray-dark col-md-5 col-lg-4 col-xl-3 px-4 px-md-6 px-lg-7 py-6">
+      
+
+<img src="https://avatars2.githubusercontent.com/u/54196703?v=4" class="circle mb-3" style="max-width: 150px;">
+<h1 class="text-white mb-2 lh-condensed">Michael Gaudreau</h1>
+<p class="mb-3 f4 text-white">
+  Staples Team Supervisor/Software Engineering Student
+at @flatiron-school
+</p>
+
+
+  <div class="f4 mb-6">
+    
+      <div class="d-flex flex-items-center mb-3">
+        <svg height="20" class="octicon octicon-mark-github mr-2 v-align-middle" fill="#ffffff" aria-label="GitHub" viewBox="0 0 16 16" version="1.1" width="20" role="img"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        <a href="https://github.com/mikeg1440" class="text-white">
+          @mikeg1440
+        </a>
+      </div>
+    
+    
+    
+      <div class="d-flex flex-items-center mb-3 text-white">
+        <svg height="20" class="octicon octicon-location mr-2 v-align-middle" fill="#ffffff" aria-label="Location" viewBox="0 0 12 16" version="1.1" width="15" role="img"><path fill-rule="evenodd" d="M6 0C2.69 0 0 2.5 0 5.5 0 10.02 6 16 6 16s6-5.98 6-10.5C12 2.5 9.31 0 6 0zm0 14.55C4.14 12.52 1 8.44 1 5.5 1 3.02 3.25 1 6 1c1.34 0 2.61.48 3.56 1.36.92.86 1.44 1.97 1.44 3.14 0 2.94-3.14 7.02-5 9.05zM8 5.5c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+        127.0.0.1
+      </div>
+    
+    
+    
+  </div>
+
+
+    </div>
+
+    <div class="col-md-7 col-lg-8 col-xl-9 px-4 py-6 px-lg-7 border-top border-md-top-0 bg-gray-light" style="background-color: #2f363d !important">
+      <div class="mx-auto" style="max-width: 900px;">
+        <div class="f4 text-white mb-6">
+          <div class="f4 text-white">
+            <p class="f5"><a href="http://localhost:4000/" class="d-flex flex-items-center text-white"><svg height="16" class="octicon octicon-chevron-left mr-2 v-align-middle" fill="#ffffff" aria-label="Home" viewBox="0 0 8 16" version="1.1" width="8" role="img"><path fill-rule="evenodd" d="M5.5 3L7 4.5 3.25 8 7 11.5 5.5 13l-5-5 5-5z"/></svg>Home</a></p>
+            <h1 class="f00-light lh-condensed">Single Page Application with a Rails API backend and JavaScript frontend</h1>
+            <p class="text-white mb-5">Published Jan 19, 2020</p>
+            
+  
+  <div class="article">
+    <h2 id="intro">Intro</h2>
+<p>I recently had to create a <a href="https://en.wikipedia.org/wiki/Single-page_application">Single Page Application(SPA)</a> that uses a Rails back end for handling and storing data and JavaScript for the front end.  I chose to create a simple poll app that allows users to create a poll that other users can then take and everyone can view the results.  So the examples will be using names based around that kind of application. You can see the code from this project <a href="https://github.com/mikeg1440/PollerApp">here</a></p>
+
+<h2 id="getting-started">Getting started</h2>
+
+<p>#### Requirements</p>
+<ul>
+  <li>Ruby on Rails</li>
+  <li>Postgresql</li>
+  <li>A simple server like Node live-server or just Python’s simple server</li>
+</ul>
+
+<p>You will need to configure PostgreSQL before hand so if you have not done so you cant google it or if you are on Ubuntu for a OS you can follow <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04">this guide here</a>.  Once that is done you can create your rails back end API with the following line</p>
+
+<p>### Create the app</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  rails new PollAppBackEnd --api --database=postgresql
+</code></pre></div></div>
+
+<p>This will create a new rails API app with a PostgreSQL database.  Once you run that command you should configure the PostgreSQL user and password in a secure way using the rails built in <a href="https://www.viget.com/articles/storing-secret-credentials-in-rails-5-2-and-up/">encrypted credentials</a> or the <a href="https://rubygems.org/gems/dotenv-rails/versions/2.1.1">dotenv-rails gem</a>.</p>
+
+<p>### Add some Gems</p>
+
+<p>Here we need to enable the cors gem by uncommenting <code class="highlighter-rouge">gem 'rack-cors'</code> in the Gemfile for handling cross origin resource sharing.  Also I added some other gems I find useful like <code class="highlighter-rouge">gem 'active_model_serializers'</code> for easy setting up json return values and for debugging and whatnot so you should add these as well</p>
+<ul>
+  <li><code class="highlighter-rouge">gem 'byebug'</code></li>
+  <li><code class="highlighter-rouge">gem 'pry-moves'</code></li>
+  <li><code class="highlighter-rouge">gem "better_errors"</code></li>
+  <li><code class="highlighter-rouge">gem 'faker'</code> - for seeding database with filler data</li>
+</ul>
+
+<p>After adding the gems run <code class="highlighter-rouge">bundle install</code> and then we need to uncomment the lines</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Rails.application.config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins '*'
+
+      resource '*',
+        headers: :any,
+        methods: [:get, :post, :put, :patch, :delete, :options, :head]
+    end
+  end
+</code></pre></div></div>
+<p>From the file</p>
+
+<p>### Create/Run Migrations
+  After doing that you start creating your migrations, for this example we will use the names polls, answers, and submissions for tables.  So we can generate them like this, specifing the name of the table then attributes(we don’t need to specify the datatype for some because the default of string is fine).</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  rails g migration polls title author question answer_ids:integer
+  rails g migration answer content poll_id:integer
+  rails g migration submissions poll_id answer_id
+</code></pre></div></div>
+<p>Now run your migrations with <code class="highlighter-rouge">rails db:migrate</code>, you may have to run <code class="highlighter-rouge">rails g db:create</code> first if you have not already.</p>
+
+<p>### Create Models</p>
+
+<p>To connect our database via code we have to create the corresponding models.  So to generate those you can run</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  rails g model poll
+  rails g model answer
+  rails g model submission
+</code></pre></div></div>
+
+<p>### Create Controllers</p>
+
+<p>Here we create our controllers with you guessed it, generators</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  rails g controller Polls
+  rails g controller Submissions
+</code></pre></div></div>
+<p>For this example we really only the two here because we are going to create the answers with nested attributes in the polls model/controller and then return the answers along with the poll for the polls_controller show route.</p>
+
+<p>### Model Relationships and Nested Attributes</p>
+
+<p>So we still need to put the relationships in our models and add the nested attributes for statement, so for the poll model
+  ##### app/models/poll.rb</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  class Poll &lt; ApplicationRecord
+    has_many :answers
+    has_many :submissions
+
+    accepts_nested_attributes_for :answers
+  end
+</code></pre></div></div>
+<p>##### app/models/answer.rb</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  class Answer &lt; ApplicationRecord
+    belongs_to :poll
+    has_many :submissions
+  end
+
+</code></pre></div></div>
+<p>##### app/models/submission.rb</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  class Submission &lt; ApplicationRecord
+    belongs_to :poll
+    belongs_to :answer
+
+  end
+</code></pre></div></div>
+
+<p>### Serializers</p>
+
+<p>To get our API to return only the attributes we want we can use rails serializers.  Since we already added the Serializers gem and ran <code class="highlighter-rouge">bundle install</code> we can simple create them with generators again.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  rails g serializer  polls
+  rails g serializer submissions
+</code></pre></div></div>
+<p>And then we specify the attributes we want to use within the newly generated files, and we can specify the polls to return the answers along with each poll when its requested so the polls_serializer would look like this.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  class PollSerializer &lt; ActiveModel::Serializer
+    attributes :id, :title, :author, :question, :answers
+  end
+</code></pre></div></div>
+<p>And the submissions serializer</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  class SubmissionSerializer &lt; ActiveModel::Serializer
+    attributes :id, :poll_id, :answer_id
+  end
+</code></pre></div></div>
+
+<p>### Add routes and controller methods
+  So now we have to specify the routes, we can do this easily with by adding the following the <code class="highlighter-rouge">app/config/routes.rb</code> file and because we don’t need all the routes we can specify the ones we want with the <code class="highlighter-rouge">only: []</code> line</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  resources :polls, only: [:index, :create, :show] do
+    resources :submissions, only: [:index, :create]
+  end
+</code></pre></div></div>
+<p>When you put a route within another route like this it means that url will be nested so to reach the polls routes it would be something like <code class="highlighter-rouge">http://localhost:3000/polls</code> and for the index route and for submissions or a specific poll it would look like <code class="highlighter-rouge">http://localhost:3000/polls/1/submissions</code> for the index route showing all submissions for the poll with ID of 1.</p>
+
+<p>Next you would create the corresponding controller methods, I’m not going to review that here but if you want to see an example you can take a look at the <a href="https://github.com/mikeg1440/PollAppBackend">back end repo</a> to get an idea of what you can do.</p>
+
+<p>### Run the local server
+  After creating the controller methods we should have a working API that you can use by running the server with <code class="highlighter-rouge">rails server</code> and then test with something like <a href="https://www.getpostman.com/downloads/">Postman</a> which is a great free tool to helping you build and test API’s.</p>
+
+<p>## The front end App
+  Now that we have gotten the API running we can start on the front end of the SPA and for this project I just created a new folder with the name <code class="highlighter-rouge">PollAppFrontEnd</code> and initialized a git repo inside the folder using <code class="highlighter-rouge">git init</code>.  From there I set up the following directory structure</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ./
+  ├── index.html
+  ├── css
+  ├── img
+  └── src
+      ├── adapters
+      └── componants
+</code></pre></div></div>
+<p>This gives you a <code class="highlighter-rouge">img</code> folder for images obviously along with a <code class="highlighter-rouge">css</code> folder which again is obvious what you put there and in the <code class="highlighter-rouge">src</code> folder is going to be all of the JavaScript files.  I created a adapters folder for putting the JS code that will be interacting with the API to send GET and POST requests with, and a componants folder for the rest of the JS classes and files.</p>
+
+<p>I have decided to write a more extensive post about the front end of the application so for this current post I will only go over the requests used to get/submit the data to/from the API.  There are really on 4 requests(2 GET &amp; 2 POST) we will need to make for this simple SPA and they are</p>
+<ul>
+  <li>A GET request to <code class="highlighter-rouge">http://localhost:3000/polls</code> to get all the poll objects that exist currently</li>
+  <li>A GET request to <code class="highlighter-rouge">http://localhost:3000/polls/:id/submissions</code> to get all submissions related to poll specified with the <code class="highlighter-rouge">:id</code> part of the URL.</li>
+  <li>A POST request to <code class="highlighter-rouge">http://localhost:3000/polls</code> to create a new poll</li>
+  <li>A POST request to <code class="highlighter-rouge">http://localhost:3000/submissions</code> to create a new submission</li>
+</ul>
+
+<p>You can test this out by just going to any of these URL’s with a browser and you should see the JSON object returned inside your main browser window.</p>
+
+<p>To give you an idea of how you might implement this you can take a look at the code below which is just a class named PollsAdapter that we can use to get and submit requests to the back end API.  You would create a new instance of the class using the code <code class="highlighter-rouge">new PollsAdapter()</code>.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  class PollsAdapter{
+    constructor(){
+      this.baseUrl = 'http://localhost:3000/polls'
+    }
+
+    getPolls(){
+      return fetch(this.baseUrl).then(resp =&gt; resp.json())
+    }
+
+    getSubmissions(pollId){
+      return fetch(`${this.baseUrl}/${pollId}/submissions`).then(resp =&gt; resp.json())
+    }
+
+    submitPoll(data){
+      return fetch(this.baseUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then((response) =&gt; response.json())
+    }
+
+    submitResponse(data){
+      return fetch(`${this.baseUrl}/${data.poll_id}/submissions`, {
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then( resp =&gt; resp.json())
+    }
+  }
+</code></pre></div></div>
+
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  </body>
+</html>
+

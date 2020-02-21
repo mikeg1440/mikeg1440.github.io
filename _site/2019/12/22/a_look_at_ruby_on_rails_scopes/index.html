@@ -1,0 +1,152 @@
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html class="min-height-full">
+  <head>
+    <meta charset="utf-8">
+    <title>A Look at Ruby on Rails Scopes</title>
+    <meta name="description" content="What is scope?Named Scopes or scopes are just methods that you can use to define custom queries inside your Rails models with the scope method.  They can be used to grab a subset of objects from your database and are a great way to reduce redundant code as well as long and frequently used queries..." />
+    <meta property="og:title" content="Michael Gaudreau" />
+    <meta property="og:image" content="https://avatars2.githubusercontent.com/u/54196703?v=4" />
+    <meta property="og:description" content="What is scope?Named Scopes or scopes are just methods that you can use to define custom queries inside your Rails models with the scope method.  They can be used to grab a subset of objects from your database and are a great way to reduce redundant code as well as long and frequently used queries..." />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css">
+  </head>
+  <body class="bg-white min-height-full" style="background-color: #2f363d !important">
+
+
+
+
+
+  <div class="d-md-flex min-height-full ">
+    <div class="flex-self-stretch bg-gray-dark col-md-5 col-lg-4 col-xl-3 px-4 px-md-6 px-lg-7 py-6">
+      
+
+<img src="https://avatars2.githubusercontent.com/u/54196703?v=4" class="circle mb-3" style="max-width: 150px;">
+<h1 class="text-white mb-2 lh-condensed">Michael Gaudreau</h1>
+<p class="mb-3 f4 text-white">
+  Staples Team Supervisor/Software Engineering Student
+at @flatiron-school
+</p>
+
+
+  <div class="f4 mb-6">
+    
+      <div class="d-flex flex-items-center mb-3">
+        <svg height="20" class="octicon octicon-mark-github mr-2 v-align-middle" fill="#ffffff" aria-label="GitHub" viewBox="0 0 16 16" version="1.1" width="20" role="img"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        <a href="https://github.com/mikeg1440" class="text-white">
+          @mikeg1440
+        </a>
+      </div>
+    
+    
+    
+      <div class="d-flex flex-items-center mb-3 text-white">
+        <svg height="20" class="octicon octicon-location mr-2 v-align-middle" fill="#ffffff" aria-label="Location" viewBox="0 0 12 16" version="1.1" width="15" role="img"><path fill-rule="evenodd" d="M6 0C2.69 0 0 2.5 0 5.5 0 10.02 6 16 6 16s6-5.98 6-10.5C12 2.5 9.31 0 6 0zm0 14.55C4.14 12.52 1 8.44 1 5.5 1 3.02 3.25 1 6 1c1.34 0 2.61.48 3.56 1.36.92.86 1.44 1.97 1.44 3.14 0 2.94-3.14 7.02-5 9.05zM8 5.5c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+        127.0.0.1
+      </div>
+    
+    
+    
+  </div>
+
+
+    </div>
+
+    <div class="col-md-7 col-lg-8 col-xl-9 px-4 py-6 px-lg-7 border-top border-md-top-0 bg-gray-light" style="background-color: #2f363d !important">
+      <div class="mx-auto" style="max-width: 900px;">
+        <div class="f4 text-white mb-6">
+          <div class="f4 text-white">
+            <p class="f5"><a href="http://localhost:4000/" class="d-flex flex-items-center text-white"><svg height="16" class="octicon octicon-chevron-left mr-2 v-align-middle" fill="#ffffff" aria-label="Home" viewBox="0 0 8 16" version="1.1" width="8" role="img"><path fill-rule="evenodd" d="M5.5 3L7 4.5 3.25 8 7 11.5 5.5 13l-5-5 5-5z"/></svg>Home</a></p>
+            <h1 class="f00-light lh-condensed">A Look at Ruby on Rails Scopes</h1>
+            <p class="text-white mb-5">Published Dec 22, 2019</p>
+            
+  
+  <div class="article">
+    <h2 id="what-is-scope">What is scope?</h2>
+
+<p><a href="https://api.rubyonrails.org/classes/ActiveRecord/Scoping/Named/ClassMethods.html#method-i-scope">Named Scopes</a> or scopes are just methods that you can use to define custom queries inside your Rails models with the <code class="highlighter-rouge">scope</code> method.  They can be used to grab a subset of objects from your database and are a great way to reduce redundant code as well as long and frequently used queries.  Let’s look at an example of a scope method with a name of <code class="highlighter-rouge">most_recent</code> in a model called <code class="highlighter-rouge">Event</code>.</p>
+
+<p><code class="highlighter-rouge">/app/models/event.rb</code></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  scope :most_recent, -&gt;(limit){ order("created_at desc").limit(limit) }
+</code></pre></div></div>
+<p>This example shows a simple way to get the most recently created Event objects and allows a limit to be passed in as an argument in order to specify how many records we want returned.  To get the most recent event objects created you would be able to call it like this <code class="highlighter-rouge">@recently_created_events = Event.most_recent(5)</code>.</p>
+
+<h2 id="but-why-use-scope">But why use scope?</h2>
+<p>There are a few reasons why you would want to use scopes:</p>
+<ul>
+  <li>They result in cleaner code</li>
+  <li>They are easier to read and stand out more than regular methods</li>
+  <li>They should be used for a single purpose so it’s easier to read, edit and understand</li>
+</ul>
+
+<p>It’s true that you can do essentially the same thing by creating a <a href="https://www.geeksforgeeks.org/ruby-class-method-and-variables/">class method</a>, for instance you could implement the previous example as a class method like this</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def self.most_recent(limit)
+    order("created_at desc").limit(limit)
+  end
+
+</code></pre></div></div>
+
+<h2 id="so-whats-the-point-of-scope-methods">So what’s the point of scope methods?</h2>
+<p>You may be asking what is the point if you can just get away with using class methods?  Well, you can chain them with other methods and implement certain code in a much more <a href="https://dzone.com/articles/software-design-principles-dry-and-kiss">DRY</a> way.  An example of something like this is chaining scopes with other methods and not having to worry about edge cases breaking things, like when you get a <code class="highlighter-rouge">nil</code> value returned back from a method call.  Take this example where we want to be able to search for all of the records created since a certain date/time, and if we don’t provide a date at all then the method simply returns all the records.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  scope :created_since, -&gt; (time){where("events.created_at &gt; ?", time) if time.present?}
+</code></pre></div></div>
+<p>This is much more DRY than the alternative class method which in this case would look similar to this example</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    def self.created_since(time)
+      if time_present?
+        self.where("events.created_at &gt; ?", time)
+      else      
+        self.all
+      end
+    end
+</code></pre></div></div>
+<p>So that way we can just call <code class="highlighter-rouge">Event.created_since(7.days.ago)</code> to all event objects created within the last 7 days.</p>
+
+<p>Another example could be if we wanted to get all the events that take place inside the US then we could create a named scope like this</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    scope :in_usa, -&gt; {where(country: "US")}
+</code></pre></div></div>
+<p>So then we can call it like <code class="highlighter-rouge">Event.in_usa</code> to get all the events taking place in the US, or to improve this a bit and abstract one more level we can code it like this</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    scope :location(country), -&gt;(country){where(country: country)}
+</code></pre></div></div>
+<p>Now we can pass whatever country in as a argument and we can get the events by country.  And if we had the previous example scope defined too we could <a href="https://www.sitepoint.com/dynamically-chain-scopes-to-clean-up-large-sql-queries/">chain</a> them together like this <code class="highlighter-rouge">Event.location("US").created_since(5.days.ago).limit(5)</code> without having to worry about getting a <code class="highlighter-rouge">nil</code> response from any one of the methods called potentially preventing a lot of head aches.</p>
+
+<h2 id="scoping-for-efficiency">Scoping for efficiency</h2>
+<p>A situation where scope becomes very useful is in the case where you have a database of users that does a <code class="highlighter-rouge">soft-delete</code> when a user deletes their account and instead of deleting the data it just changes the user status to ‘inactive’ and the database still holds the account record.  So now as your user database grows it can take significantly more time to search through ALL the user records, when in realistically for most tasks you only really want to be searching through the currently ‘active’ users.  So you could improve the speed of your app by defining some scopes like this within a user model.</p>
+
+<p><code class="highlighter-rouge">/app/models/user.rb</code></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  scope :active, -&gt; {where(status: 'active')}
+  scope :inactive, -&gt; {where(status: 'inactive')}
+</code></pre></div></div>
+<p>So then when you want to do a search within the active user set you would use this code <code class="highlighter-rouge">User.all.active</code> and inversely <code class="highlighter-rouge">User.all.inactive</code> to use the inactive user set.</p>
+
+<p>Another good reason to use them is because scopes express intent, it’s a good idea to use them whenever your chaining simple scopes that are already <a href="https://apidock.com/rails/ActiveRecord/QueryMethods">built in</a> to rails like <code class="highlighter-rouge">limit</code> or <code class="highlighter-rouge">where</code> into more complicated scopes.  This is essentially what scope was designed for.</p>
+
+<h5 id="there-are-a-few-caveats-regarding-the-use-of-scope">There are a few caveats regarding the use of scope</h5>
+<ul>
+  <li>If you need to preload scopes then build them in with <a href="https://guides.rubyonrails.org/association_basics.html">active record associations</a> instead.</li>
+  <li>If you use more than the built in scopes then you should use a class method instead</li>
+  <li>Don’t use a <a href="https://apidock.com/rails/ActiveRecord/Base/default_scope/class">default scope</a> (scope auto applied to your model) because they can be hard to debug later in the apps development.</li>
+</ul>
+
+<p>So in review you should use scopes when your chaining the built in methods of selecting, sorting, joining, and filtering code.  Default scopes can be useful, but be careful because of the possible issues debugging them in the future.  You can DRY out your code, make it easier to understand and possibly increase your apps efficiency if used in the proper way.  It’s just another great tool that Ruby on Rails gives you to make your code better and your life easier, but you have to understand it first to really take advantage of all that named scopes can offer.</p>
+
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  </body>
+</html>
+

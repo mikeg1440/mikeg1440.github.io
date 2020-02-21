@@ -1,0 +1,191 @@
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html class="min-height-full">
+  <head>
+    <meta charset="utf-8">
+    <title>Getting Started With Rails And Devise</title>
+    <meta name="description" content="Setting up a Ruby on Rails with OAuth + Devise gem for authentication and PostgreSQLFor a portfolio project I created while attending Flatiron coding bootcamp required that we use the authentication gem Devise for authentication and add the ability to login using oauth.  I decided to go with Gith..." />
+    <meta property="og:title" content="Michael Gaudreau" />
+    <meta property="og:image" content="https://avatars2.githubusercontent.com/u/54196703?v=4" />
+    <meta property="og:description" content="Setting up a Ruby on Rails with OAuth + Devise gem for authentication and PostgreSQLFor a portfolio project I created while attending Flatiron coding bootcamp required that we use the authentication gem Devise for authentication and add the ability to login using oauth.  I decided to go with Gith..." />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css">
+  </head>
+  <body class="bg-white min-height-full" style="background-color: #2f363d !important">
+
+
+
+
+
+  <div class="d-md-flex min-height-full ">
+    <div class="flex-self-stretch bg-gray-dark col-md-5 col-lg-4 col-xl-3 px-4 px-md-6 px-lg-7 py-6">
+      
+
+<img src="https://avatars2.githubusercontent.com/u/54196703?v=4" class="circle mb-3" style="max-width: 150px;">
+<h1 class="text-white mb-2 lh-condensed">Michael Gaudreau</h1>
+<p class="mb-3 f4 text-white">
+  Staples Team Supervisor/Software Engineering Student
+at @flatiron-school
+</p>
+
+
+  <div class="f4 mb-6">
+    
+      <div class="d-flex flex-items-center mb-3">
+        <svg height="20" class="octicon octicon-mark-github mr-2 v-align-middle" fill="#ffffff" aria-label="GitHub" viewBox="0 0 16 16" version="1.1" width="20" role="img"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        <a href="https://github.com/mikeg1440" class="text-white">
+          @mikeg1440
+        </a>
+      </div>
+    
+    
+    
+      <div class="d-flex flex-items-center mb-3 text-white">
+        <svg height="20" class="octicon octicon-location mr-2 v-align-middle" fill="#ffffff" aria-label="Location" viewBox="0 0 12 16" version="1.1" width="15" role="img"><path fill-rule="evenodd" d="M6 0C2.69 0 0 2.5 0 5.5 0 10.02 6 16 6 16s6-5.98 6-10.5C12 2.5 9.31 0 6 0zm0 14.55C4.14 12.52 1 8.44 1 5.5 1 3.02 3.25 1 6 1c1.34 0 2.61.48 3.56 1.36.92.86 1.44 1.97 1.44 3.14 0 2.94-3.14 7.02-5 9.05zM8 5.5c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+        127.0.0.1
+      </div>
+    
+    
+    
+  </div>
+
+
+    </div>
+
+    <div class="col-md-7 col-lg-8 col-xl-9 px-4 py-6 px-lg-7 border-top border-md-top-0 bg-gray-light" style="background-color: #2f363d !important">
+      <div class="mx-auto" style="max-width: 900px;">
+        <div class="f4 text-white mb-6">
+          <div class="f4 text-white">
+            <p class="f5"><a href="http://localhost:4000/" class="d-flex flex-items-center text-white"><svg height="16" class="octicon octicon-chevron-left mr-2 v-align-middle" fill="#ffffff" aria-label="Home" viewBox="0 0 8 16" version="1.1" width="8" role="img"><path fill-rule="evenodd" d="M5.5 3L7 4.5 3.25 8 7 11.5 5.5 13l-5-5 5-5z"/></svg>Home</a></p>
+            <h1 class="f00-light lh-condensed">Getting Started With Rails And Devise</h1>
+            <p class="text-white mb-5">Published Dec 18, 2019</p>
+            
+  
+  <div class="article">
+    <h1 id="setting-up-a-ruby-on-rails-with-oauth--devise-gem-for-authentication-and-postgresql">Setting up a Ruby on Rails with OAuth + Devise gem for authentication and PostgreSQL</h1>
+
+<h5 id="for-a-portfolio-project-i-created-while-attending-flatiron-coding-bootcamp-required-that-we-use-the-authentication-gem-devise-for-authentication-and-add-the-ability-to-login-using-oauth--i-decided-to-go-with-github-for-a-oauth-login-option-and-figured-it-would-be-helpful-to-others-to-document-the-process">For a portfolio project I created while attending Flatiron coding bootcamp required that we use the authentication gem <a href="https://github.com/plataformatec/devise">Devise</a> for authentication and add the ability to login using oauth.  I decided to go with Github for a OAuth login option and figured it would be helpful to others to document the process</h5>
+
+<h2 id="general-app-creation">General App creation</h2>
+
+<p>I decided to make a invoice generator app that would allow users to login, create products, clients, and accounts that would then let them generate invoices that could sent to clients via email.  The clients could then accept or reject the invoice after receiving it and the user would be able to view the status in their dashboard.  First thing I did was try to map out the relationships for my models using <a href="https://dbdiagram.io/">DBDiagram.io</a> and came up with these models.</p>
+
+<h6 id="models">Models</h6>
+<ul>
+  <li>User</li>
+  <li>Account</li>
+  <li>Invoice</li>
+  <li>InvoiceProduct</li>
+  <li>Product</li>
+</ul>
+
+<h4 id="this-is-the-diagram-for-my-models">This is the diagram for my models</h4>
+<p><img src="https://i.imgur.com/u89GruO.png" alt="Picture of database schema" style="width: 100%;" /></p>
+<h3 id="set-up-database">Set up database</h3>
+
+<p>If you have never used a PostgreSQL database before you will need to do a few things first to get started, you can take a look at a guide like this one for <a href="https://tecadmin.net/install-postgresql-server-on-ubuntu/">installing PostgreSQL on Ubuntu</a>.  After installing you will need to set a new password for the database user, you can follow the steps here if you like.
+    - run <code class="highlighter-rouge">sudo su postgres</code>
+    - then <code class="highlighter-rouge">psql</code>
+    - next type <code class="highlighter-rouge">\password</code> to set a new password</p>
+
+<p>### Create you Rails application</p>
+
+<p>The next part assumes you know how to get a rails app started using <code class="highlighter-rouge">rails generate</code> so you can do so now if you following along for you own app.  The only caveat is you must specify that you are using a PostgreSQL database when you create the app using the <code class="highlighter-rouge">-d=postgresql</code> argument.  If you are not familiar with the commands then you would get started with these commands assuming the app name is Invoicer and models are as I said before.</p>
+<ul>
+  <li><code class="highlighter-rouge">rails new Invoicer -d=postgresql</code> to create the app directory</li>
+  <li>run <code class="highlighter-rouge">bundle</code></li>
+  <li><code class="highlighter-rouge">rails g model Product name price description:text</code> to create a product model with attributes name price and description(they default to string and text is just for holding more characters that string)</li>
+  <li><code class="highlighter-rouge">rails g controller products new edit show index</code></li>
+</ul>
+
+<p>First we need to add the postgres username and password to our application, I ended up using the DotENV gem to do this.  The gem gives you a easy way to manage environmental variables from a local <code class="highlighter-rouge">.env</code> file so you can put sensitive data in there while developing.  All you have to do is add <code class="highlighter-rouge">gem 'dotenv-rails', groups: [:development, :test]</code> to your gemfile and then <code class="highlighter-rouge">bundle install</code>.  Next add the following to your <code class="highlighter-rouge">config/application.rb</code> file before <code class="highlighter-rouge">Bundler.require</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bundler.require(*Rails.groups)
+Dotenv::Railtie.load
+</code></pre></div></div>
+<p>Now we have to create a <code class="highlighter-rouge">.env</code> file in root directory of the application which you can to by <code class="highlighter-rouge">touch .env</code> and the next part is very import if your pushing up to a repo and it’s to add the filename to the <code class="highlighter-rouge">.gitignore</code> file so it doesn’t get uploaded because that’s where we put our credentials.  You can just add environmental variables like you normally would so you can name them anything you want, so for example you might use <code class="highlighter-rouge">DB_USER=postgres</code> for the database user and <code class="highlighter-rouge">DB_PASSWORD=&lt;password&gt;</code>.</p>
+
+<p>Next you have to modify the <code class="highlighter-rouge">config/database.yml</code> file to work with our database and make the following changes</p>
+<ul>
+  <li>set the user and password to get the env variables like <code class="highlighter-rouge">&lt;%= ENV['DB_USER'] %&gt;</code></li>
+  <li>
+    <p>set <code class="highlighter-rouge">host: localhost</code> for the dev and test entries</p>
+  </li>
+  <li>Add <code class="highlighter-rouge">gem 'devise'</code> to Gemfile</li>
+  <li>run <code class="highlighter-rouge">bundle install</code> to install gems</li>
+  <li><code class="highlighter-rouge">rails g devise:install</code> to install devise</li>
+  <li><code class="highlighter-rouge">rails g devise user</code> to create user migration and model(take a second to look through the migration file and uncomment any attributes you want to add to the user model)</li>
+  <li><code class="highlighter-rouge">rails g migrate</code> to run</li>
+  <li><code class="highlighter-rouge">rails g devise:views</code> to create the devise views (this creates all devise views)</li>
+</ul>
+
+<p>Now you can go ahead and create the database and run migrations, I made this short task to facilitate the process.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  namespace :db do
+    desc "Rebuild database, this drops, creates, migrates and seeds the db"
+    task dcms: :environment do
+      raise "Not allowed to run on production" if Rails.env.production?
+      Rake::Task['db:drop'].execute
+      Rake::Task['db:create'].execute
+      Rake::Task['db:migrate'].execute
+      Rake::Task['db:seed'].execute
+      end
+  end
+</code></pre></div></div>
+<p>Put that in a file in <code class="highlighter-rouge">lib/tasks/</code> named anything and then you can run <code class="highlighter-rouge">rake db:dcms</code> which will drop the current databases, create new ones, run migrations and seed the db.</p>
+
+<p>## Add Oauth</p>
+
+<p>First to add OAuth capability to the app we need the oauth-github gem, so add <code class="highlighter-rouge">gem 'omniauth-github'</code> and yet again running <code class="highlighter-rouge">bundle</code>.</p>
+
+<p>Next we need to get access to the <a href="https://developer.github.com/">GitHub API</a> by logging into your Github account and going to settings -&gt; Developer Settings -&gt; <a href="https://github.com/settings/developers">OAuth Apps</a>.  Then create a new OAuth App with the following settings</p>
+<ul>
+  <li>Homepage URL - <code class="highlighter-rouge">http://localhost:3000/</code></li>
+  <li>Authorization callback URL - http://localhost:3000/app/github/callback
+  After creating the App you need to get the Client ID and Client Secret and put those in the <code class="highlighter-rouge">.env</code> file then add this line to <code class="highlighter-rouge">config/initializers/devise.rb</code>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  config.omniauth :github, ENV['GITHUB_APP_ID'], ENV['GITHUB_APP_SECRET'], scope: 'user:email'
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="add-strong-parameters">Add strong parameters</h3>
+
+<p>If you want to add addition fields to the login or sign up that what the default devise views have you have create a class that inherits from <code class="highlighter-rouge">Devise::RegistrationsController</code> file with whatever parameters you want to accept like this as well as add any attributes you want to save.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  private
+  def sign_up_params
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  end
+  def account_update_params
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
+  end
+</code></pre></div></div>
+
+<p>Then in the <code class="highlighter-rouge">config/routes.rb</code> file put <code class="highlighter-rouge">devise_for :users, controllers: { registrations: ‘registrations’, omniauth_callbacks: ‘users/omniauth_callbacks’ }</code> which tells devise to look for the controller named registrations for registration handling, and callbacks for handling OAuth  you can do this with sessions, or any other devise module.</p>
+
+<p>Once you have done that you should be all set to go the sign in page and a option at the bottom should say <code class="highlighter-rouge">Sign in with Github</code> and if you click it you should see something like this.</p>
+
+<p><img src="https://i.imgur.com/K1kEqRD.png" alt="https://i.imgur.com/K1kEqRD.png" /></p>
+
+<h3 id="and-thats-it-you-have-connected-your-app-to-github-via-oauth-and-users-can-now-sign-in-your-app-using-their-github-authentication">And thats it, you have connected your app to Github via OAuth and users can now sign in your app using their Github authentication.</h3>
+
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  </body>
+</html>
+
