@@ -1,0 +1,174 @@
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html class="min-height-full">
+  <head>
+    <meta charset="utf-8">
+    <title>Installing Custom Node Modules On Your System Locally</title>
+    <meta name="description" content="  I recently found myself developing a Node.js CLI program that I wanted to test installing and using it locally.  This post is going to look at a few ways you can go about doing that.The name of the program I was developing and the one being used in examples and screenshots is called corona-cli,..." />
+    <meta property="og:title" content="Michael Gaudreau" />
+    <meta property="og:image" content="https://avatars2.githubusercontent.com/u/54196703?v=4" />
+    <meta property="og:description" content="  I recently found myself developing a Node.js CLI program that I wanted to test installing and using it locally.  This post is going to look at a few ways you can go about doing that.The name of the program I was developing and the one being used in examples and screenshots is called corona-cli,..." />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css">
+  </head>
+  <body class="bg-white min-height-full" style="background-color: #2f363d !important">
+
+
+
+
+
+  <div class="d-md-flex min-height-full ">
+    <div class="flex-self-stretch bg-gray-dark col-md-5 col-lg-4 col-xl-3 px-4 px-md-6 px-lg-7 py-6">
+      
+
+<img src="https://avatars2.githubusercontent.com/u/54196703?v=4" class="circle mb-3" style="max-width: 150px;">
+<h1 class="text-white mb-2 lh-condensed">Michael Gaudreau</h1>
+<p class="mb-3 f4 text-white">
+  Staples Team Supervisor/Software Engineering Graduate of @flatiron-school
+</p>
+
+
+  <div class="f4 mb-6">
+    
+      <div class="d-flex flex-items-center mb-3">
+        <svg height="20" class="octicon octicon-mark-github mr-2 v-align-middle" fill="#ffffff" aria-label="GitHub" viewBox="0 0 16 16" version="1.1" width="20" role="img"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        <a href="https://github.com/mikeg1440" class="text-white">
+          @mikeg1440
+        </a>
+      </div>
+    
+    
+    
+      <div class="d-flex flex-items-center mb-3 text-white">
+        <svg height="20" class="octicon octicon-location mr-2 v-align-middle" fill="#ffffff" aria-label="Location" viewBox="0 0 12 16" version="1.1" width="15" role="img"><path fill-rule="evenodd" d="M6 0C2.69 0 0 2.5 0 5.5 0 10.02 6 16 6 16s6-5.98 6-10.5C12 2.5 9.31 0 6 0zm0 14.55C4.14 12.52 1 8.44 1 5.5 1 3.02 3.25 1 6 1c1.34 0 2.61.48 3.56 1.36.92.86 1.44 1.97 1.44 3.14 0 2.94-3.14 7.02-5 9.05zM8 5.5c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+        Hartford, CT
+      </div>
+    
+    
+    
+  </div>
+
+
+    </div>
+
+    <div class="col-md-7 col-lg-8 col-xl-9 px-4 py-6 px-lg-7 border-top border-md-top-0 bg-gray-light" style="background-color: #2f363d !important">
+      <div class="mx-auto" style="max-width: 900px;">
+        <div class="f4 text-white mb-6">
+          <div class="f4 text-white">
+            <p class="f5"><a href="/" class="d-flex flex-items-center text-white"><svg height="16" class="octicon octicon-chevron-left mr-2 v-align-middle" fill="#ffffff" aria-label="Home" viewBox="0 0 8 16" version="1.1" width="8" role="img"><path fill-rule="evenodd" d="M5.5 3L7 4.5 3.25 8 7 11.5 5.5 13l-5-5 5-5z"/></svg>Home</a></p>
+            <h1 class="f00-light lh-condensed">Installing Custom Node Modules On Your System Locally</h1>
+            <p class="text-white mb-5">Published Mar 29, 2020</p>
+            
+  
+  <div class="article">
+    <div class="text-center">
+  <img src="https://s3.amazonaws.com/usdphosting.accusoft/wp-content/uploads/2019/05/node-js-logo-sized.png" alt="Node.js logo" class="mx-auto" />
+</div>
+<hr />
+
+<p>I recently found myself developing a Node.js CLI program that I wanted to test installing and using it locally.  This post is going to look at a few ways you can go about doing that.</p>
+
+<p>The name of the program I was developing and the one being used in examples and screenshots is called corona-cli, it’s CLI that displays the number of cases for countries around the world as well as the states.  It’s a forked repo from <a href="https://github.com/ahmadawais/corona-cli">Ahmad Awais’s Corona-CLI</a> that just adds a interactive CLI menu, a filter for specific states and some other aesthetics.  Because I just did this as a side project to keep an eye on the ongoing pandemic and the fact that corona-cli is already published as a NPM package I only intended on using it for my personal systems.  But if you want to check out the code that I added to it you can see it <a href="https://github.com/mikeg1440/corona-cli">here</a>.</p>
+
+<p><br /><br /><br /></p>
+
+<h2 id="using-npm-link">Using NPM link</h2>
+
+<p>NPM comes with a very handy command to create a symlink to any local packages so that you test them out in the global context of your system and is the easiest way.</p>
+
+<p>All you need to do is run <code class="highlighter-rouge">npm link</code> from within the package folder which will create a symlink in the global folder <code class="highlighter-rouge">{prefix}/lib/node_modules/&lt;package_name&gt;</code> to the current folder’s package.  The <code class="highlighter-rouge">{prefix}</code> could be slightly different for each configuration, mine was <code class="highlighter-rouge">$HOME/.nvm/versions/v12.16.1/</code> because I use NVM but to see the diffent possible locations check out the <a href="https://docs.npmjs.com/misc/config">NPM Docs</a>.  The link command will also link any files bins in the package to <code class="highlighter-rouge">{prefix}/bin/{name}</code>.  Also worth noting is the <code class="highlighter-rouge">&lt;package_name&gt;</code> will be taken from the name set in the <code class="highlighter-rouge">package.json</code> file so make sure you have that set before running the command.</p>
+
+<p>After changing into the package directory <code class="highlighter-rouge">corona-cli</code> in this case for my CLI program and running <code class="highlighter-rouge">npm link</code> you should see a output similar to this, obviously your file paths with vary but this should give you general idea of what it looks like when the command is successful.</p>
+
+<div class="text-center">
+  <img src="https://i.imgur.com/v5dHz8m.png" alt="Screenshot of running npm link" class="mx-auto" />
+</div>
+
+<p>As you can see it created two bin files, one called <code class="highlighter-rouge">corona</code> and the other <code class="highlighter-rouge">corona-cli</code> that both link back to the current packages <code class="highlighter-rouge">index.js</code> file.  This is because the <code class="highlighter-rouge">package.json</code> for the current folder has two entries that look like this.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"bin": {
+                "corona": "index.js",
+                "corona-cli": "index.js"
+        },
+</code></pre></div></div>
+
+<p>This gives me the ability to run <code class="highlighter-rouge">corona</code> or <code class="highlighter-rouge">corona-cli</code> from anywhere in the terminal to start up the CLI program.</p>
+
+<p><br /><br /></p>
+
+<h3 id="linking-to-another-project">Linking to another project</h3>
+
+<p>If you wanted to then use your newly installed package within another project you can simply run the link command again from inside the projects folder, specifying the name of the package.</p>
+
+<p>So for this example after changing into the new project directory I could run <code class="highlighter-rouge">npm link corona-cli</code> and it will create a new symbolic link from the globally-installed packge to the <code class="highlighter-rouge">node_modules</code> folder.</p>
+
+<div class="text-center">
+  <img src="https://i.imgur.com/AE6RuUO.png" alt="NPM link globally installed package to local node_modules" class="mx-auto" />
+</div>
+
+<p><br /><br /></p>
+
+<h3 id="removing-the-package">Removing the package</h3>
+
+<p>To uninstall the package you would just remove it like any other global package with the <code class="highlighter-rouge">uninstall</code> command or any of it’s aliases like <code class="highlighter-rouge">remove</code>, <code class="highlighter-rouge">rm</code>, <code class="highlighter-rouge">r</code>, <code class="highlighter-rouge">un</code> or <code class="highlighter-rouge">unlink</code>.</p>
+
+<div class="text-center">
+  <img src="https://i.imgur.com/klVXBL5.png" alt="NPM remove globally installed package" class="mx-auto" />
+</div>
+
+<p><br /><br /><br /></p>
+
+<h2 id="other-ways-of-doing-it">Other ways of doing it</h2>
+
+<p>Although I really liked the streamlined way <code class="highlighter-rouge">npm link</code> worked I came across a few other ways that you can do the same thing essentially and are worth noting a few differences.</p>
+
+<p><br /><br /></p>
+
+<h3 id="install-with-direct-path">Install with direct path</h3>
+
+<p>You can just run <code class="highlighter-rouge">npm -g install /absolute/path/to/package/corona-cli</code> and that will install it globally or from within a project folder <code class="highlighter-rouge">npm install /absolute/path/to/package/corona-cli</code> will modify the projects <code class="highlighter-rouge">package.json</code> to include the package as a dependency.  This may or may not be what you want depending on if you actually intend on publishing it or just keeping it local on your system.</p>
+
+<p>The big difference between using this method and the link command is that <code class="highlighter-rouge">npm link</code> will not alter the <code class="highlighter-rouge">package.json</code> file in the current directory and it will not run any of the pre-install or post-install hooks that you can set with <a href="https://docs.npmjs.com/misc/scripts">npm-scripts</a> if your not familiar with them you should briefly look them over to just to get an idea of what options you can set in your package.json file.</p>
+
+<p><br /><br /></p>
+
+<h3 id="install-with-a-tarball">Install with a tarball</h3>
+
+<p>You can also pack everything up in a installable tarball by running the pack command inside the root folder of the package you want to pack up.  It will generate a <code class="highlighter-rouge">.tgz</code> file that contains all everything you need to install the package just by running <code class="highlighter-rouge">npm pack</code> which will produce a file called <code class="highlighter-rouge">&lt;package_name&gt;-&lt;version&gt;.tgz</code>.</p>
+<div class="text-center">
+  <img src="https://i.imgur.com/fnn3c7R.png" alt="Screenshot of npm pack command output" class="mx-auto" />
+</div>
+
+<p>You can then install the package by running <code class="highlighter-rouge">npm -g install &lt;package_name&gt;-&lt;version&gt;.tgz</code>.</p>
+
+<h2 id="wrapping-up">Wrapping up</h2>
+
+<p>You can see all the specifics of what <code class="highlighter-rouge">npm link</code> does and more by checking out the <a href="https://docs.npmjs.com/">NPM Docs</a> but the main overview of the differences between the three ways we looked at for using your own node modules on your local system for testing and usage are</p>
+
+<ul>
+  <li><code class="highlighter-rouge">npm install /absolute/path/folder</code> will run the preinstall/postinstall hooks, but npm link will not.</li>
+  <li><code class="highlighter-rouge">npm link</code> uses the global NPM space, <code class="highlighter-rouge">npm install /absolute/path/folder</code> does not. npm link creates a symlink to the package in the global space, and then when you call npm link from another project directory, it creates a symlink not directly to the package, but rather to the global symlink. This is an important differences if you are using different global node.js</li>
+  <li><code class="highlighter-rouge">npm install /absolute/path/folder</code> will alter package.json, npm link does not.</li>
+</ul>
+
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  </body>
+</html>
+
