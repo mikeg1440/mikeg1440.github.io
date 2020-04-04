@@ -1,12 +1,8 @@
 ---
 layout: post
 title: Introduction to React Hooks
+date: 2020-04-03 23:04 -0400
 ---
-
-<head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-
 ![React Hooks Visual](https://res.cloudinary.com/practicaldev/image/fetch/s--8ZFuZgNR--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://thepracticaldev.s3.amazonaws.com/i/2v9z9mh5dhxm311vxwkq.jpg)
 
 ## What are Hooks?
