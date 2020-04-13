@@ -10,7 +10,7 @@ title: Customizing Vim for Coding
 
 
 <div class='text-center'>
-  <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Icon-Vim.svg/1200px-Icon-Vim.svg.png' alt='Vim logo' class='img-fluid' />
+  <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Icon-Vim.svg/1200px-Icon-Vim.svg.png' width="50%" alt='Vim logo' class='img-fluid' />
 </div>
 
 
