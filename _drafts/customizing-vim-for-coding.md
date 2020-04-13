@@ -1,11 +1,6 @@
 ---
 layout: post
 title: Customizing Vim for Coding
-date: 2020-04-12 20:10 -0400
----
----
-layout: post
-title: Customizing Vim for Coding
 ---
 
 
