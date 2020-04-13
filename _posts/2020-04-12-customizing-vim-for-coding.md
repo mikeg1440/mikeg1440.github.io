@@ -26,7 +26,7 @@ Some time during 1976 a student at the University of California Berkeley develop
 Allot of people, myself included don't initially see the benefit of using a command line based editor because it initially seems less intuitive to use when you have your choice of so many great text editors with GUI's out there like VS Code, Atom, Sublime and Eclipse.  But there are benefits of why you would want to use Vim as a editor like it being much lighter on system resources than non CLI editors, quick to use once you know the commands and shortcuts, has portable configs, is well documented, enjoys vibrant community support and you can customize and expand the basic install of Vim to get you pretty damn close to in terms of features to all those newer editors out there, it just takes a little know how.  
 
 <div class='text-center'>
-  <img src='https://i.imgur.com/L0p62XK.png' alt='screenshot of basic Vim window' class='img-fluid' />
+  <img src='https://i.imgur.com/L0p62XK.png' alt='screenshot of basic Vim window' width="75%" class='img-fluid' />
 </div>
 
 
@@ -34,7 +34,7 @@ Allot of people, myself included don't initially see the benefit of using a comm
 So in this post I'm going to go through how to customize your installation of Vim to make it into a code editing machine with all sorts of features that you may not have known possible to configure with a CLI text editor and that pretty makes Vim into a IDE.  Since I'm currently on Ubuntu the examples shown here will be for use on a Ubuntu machine but most of the setup is more or less the same on any Linux distro.  
 
 <div class='text-center'>
-  <img src='https://i.imgur.com/LjXoX5a.png' alt='Vim screenshot after following this post' class='img-fluid' />
+  <img src='https://i.imgur.com/LjXoX5a.png' alt='Vim screenshot after following this post' width="75%" class='img-fluid' />
 </div>
 
 
