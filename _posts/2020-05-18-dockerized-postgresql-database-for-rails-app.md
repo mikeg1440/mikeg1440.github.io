@@ -1,10 +1,10 @@
 ---
 layout: post
 title: Dockerized PostgreSQL database for Rails App
-date: 2020-05-18 08:37 +0800
+date: 2020-05-18 11:26 +0800
 ---
 <div class='text-center'>
-  <img src='https://www.google.com/url?sa=i&url=https%3A%2F%2Ftowardsdatascience.com%2Ftricks-for-postgres-and-docker-that-will-make-your-life-easier-fc7bfcba5082&psig=AOvVaw2by2u8zH5KAyotF9RHclXO&ust=1589848550470000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOjcs8SVvOkCFQAAAAAdAAAAABAD' alt='Docker and PostgreSQL logos' />
+  <img src='https://miro.medium.com/max/2560/1*Wg7pRIUc7uRO23ZcoY6U_w.jpeg' alt='Docker and PostgreSQL logos' />
 </div>
 
 When you develop applications for long you enough your inevitability going to come across a app that requires some version of a product that is different from what you have installed on your system already.  I just came across this where I had an older version of PostgreSQL set up for another app and wanted to setup the new application I was creating with the latest version.  So instead of ending up in this situation again I decided to dockerize the database that I would connect to a Rails application.  This article documents the process I took to do so.
