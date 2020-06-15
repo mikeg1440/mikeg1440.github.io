@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Scraping data with Selenium and Python
-date: 2020-06-14 21:57 -0400
+date: 2020-06-14 22:04 -0400
 ---
 Selenium is web based automation tool that allows you to automate the usage of a browser.  It can be useful for alot of things like testing and data scraping.  This post is just going to be a short introduction to get you started using selenium in python.
 
@@ -87,3 +87,25 @@ After you finished with all the testing or scraping you want to do don't forget 
 ```
 driver.close()
 ```
+
+This is the full script put together.
+
+```
+from selenium import webdriver
+
+driver = webdriver.Firefox()
+
+driver.get('https://www.rottentomatoes.com/browse/in-theaters/')
+
+movies = []
+
+posters = driver.find_elements_by_class_name('mb-movie')
+
+for poster in posters:
+  title = poster.find_elements_by_class_name('movieTitle')[0].text
+  url = poster.find_elements_by_tag_name('a')[0].get_attribute('href')
+  movies.append({title: url})
+  print "Title: {} ==> {}\n".format(title, url)
+```
+
+Selenium is a powerful tool that opens up alot of possiblities for automating whatever you can think of, and being implemented in python makes it that much easier to get coding on the problem your trying to solve with very minimal setup and configuration.  There are a bunch of baked in features that you should take a look at to familiarize yourself with the methods, we only looked a couple here in this post but you can get most of the info from the [documentation](https://selenium-python.readthedocs.io/) so take a look and build something! 
