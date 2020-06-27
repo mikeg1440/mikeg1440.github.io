@@ -1,5 +1,30 @@
 <div>
 
+  <div class="post-list-container">
+    <h2 class='white' align='center'>Articles</h2>
+    {% for post in site.posts  %}
+        {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
+        {% capture next_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
+
+        {% if forloop.first %}
+        <h3 class='blue' id="{{ this_year }}-ref" align='right'>{{this_year}}</h3>
+        <ul class='post-list'>
+        {% endif %}
+
+        <li><a href="{{ post.url }}"><b>{{ post.title }}</b> - {{ post.date | date: "%m/%Y" }}</a></li>
+
+        {% if forloop.last %}
+        </ul>
+        {% else %}
+            {% if this_year != next_year %}
+            </ul>
+            <h3 class='blue' id="{{ next_year }}-ref" align='right'>{{next_year}}</h3>
+            <ul class='post-list'>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+  </div>
 
 
 </div>
