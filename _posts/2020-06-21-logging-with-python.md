@@ -8,7 +8,7 @@ date: 2020-06-21 23:27 -0400
 </div>
 
 <div class='text-center'>
-  <img src='https://lh3.googleusercontent.com/proxy/fipEKgyX6UZVhxmBVVDMhycEd8__YAnvWLtiD3HZ1l0Ulih0zhEwnTui63-c6eHCNzSmdRxMgROdicBRdlGiGXcldIFfTW6V6DIddmWtDceTgoaGXOGVLA5fvij2GY5ISd2ngRvTI4SJrOLS-2jrAZJDOA' alt='Logging your python apps' />
+  <img src='https://edgedelta.com/media/2025/03/Python-Logging.png' width="100%" height="auto" alt='Logging your python apps' />
 </div>
 
 When I first started writing code I was using the print statement to display data or notifications so I knew the program was running properly.  As I progressed as a coder I became aware of the tools that are at your disposal giving you a better way to than using the print statement for all your debugging and diagnostics.  Python has actually had a logging module built in as far back as version 2.3 and is extremely useful for providing a view of the behavior of a running program.  This post is going to take look at how to use the logging module in python and how you might put it to use.

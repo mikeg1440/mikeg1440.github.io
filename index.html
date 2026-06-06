@@ -1,3 +1,333 @@
 ---
-layout: home
+layout: default
+title: NullByte // Portfolio
 ---
+
+<main>
+
+  <!-- HERO -->
+  <section id="hero" style="position:relative; max-width:100%; padding: 80px 8vw 0; min-height:100vh; display:flex; flex-direction:column; justify-content:center;">
+    <div class="hero-prompt">> initialize portfolio.exe</div>
+    <h1 class="hero-name glitch">
+      YOUR<br><span class="accent">NAME</span>
+    </h1>
+    <p class="hero-title">// Security Researcher &amp; Full-Stack Developer</p>
+    <p class="hero-desc">
+      <span id="typed-text"></span><span class="typed-cursor"></span>
+    </p>
+    <div class="hero-btns">
+      <a class="btn btn-primary" href="#projects">View Projects</a>
+      <a class="btn btn-outline" href="#contact">Get In Touch</a>
+    </div>
+    <div class="status-bar">
+      <div class="status-item"><div class="status-dot"></div> SYSTEMS ONLINE</div>
+      <div class="status-item">// LOC: HARTFORD, CT</div>
+      <div class="status-item">// AVAILABLE FOR HIRE</div>
+    </div>
+    <div class="scroll-hint">SCROLL<div class="scroll-arrow"></div></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="sec-header">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">About</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a <span>security researcher</span> and developer passionate about breaking things to understand how they work — then building them back better.</p>
+        <p>My work spans <span>penetration testing</span>, <span>CTF competitions</span>, and full-stack development. I enjoy operating at the intersection of offense and engineering.</p>
+        <p>Currently pursuing <span>OSCP</span> and contributing to open-source security tooling. Always looking for interesting problems to solve.</p>
+      </div>
+      <div class="terminal-box">
+        <div class="terminal-bar">
+          <div class="t-btn" style="background:#ff5f57;"></div>
+          <div class="t-btn" style="background:#febc2e;"></div>
+          <div class="t-btn" style="background:#28c840;"></div>
+          <span style="color:var(--muted);font-size:0.72rem;margin-left:8px;">~/whoami</span>
+        </div>
+        <div class="terminal-body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">cat about.json</span></div>
+          <div class="t-out">{</div>
+          <div class="t-out" style="padding-left:2rem;"><span class="t-key">"name"</span>: <span class="t-val">"Mike Gaudreau"</span>,</div>
+          <div class="t-out" style="padding-left:2rem;"><span class="t-key">"role"</span>: <span class="t-val">"Security / Dev"</span>,</div>
+          <div class="t-out" style="padding-left:2rem;"><span class="t-key">"location"</span>: <span class="t-val">"Hartford, CT"</span>,</div>
+          <div class="t-out" style="padding-left:2rem;"><span class="t-key">"ctf_rank"</span>: <span class="t-val">"Top 5%"</span>,</div>
+          <div class="t-out" style="padding-left:2rem;"><span class="t-key">"open_to"</span>: <span class="t-val">"opportunities"</span></div>
+          <div class="t-out">}</div>
+          <div style="margin-top:0.5rem;"><span class="t-prompt">$</span> <span class="typed-cursor"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="sec-header">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Skills</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-cat">// Offensive Security</div>
+        <div class="skill-tags">
+          <span class="tag red">Penetration Testing</span>
+          <span class="tag red">Web App Exploits</span>
+          <span class="tag red">CTF / PWN</span>
+          <span class="tag red">Reverse Engineering</span>
+          <span class="tag red">Social Engineering</span>
+          <span class="tag red">Metasploit</span>
+          <span class="tag red">Burp Suite</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">// Development</div>
+        <div class="skill-tags">
+          <span class="tag">Python</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Rust</span>
+          <span class="tag">Go</span>
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Docker</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">// Infrastructure</div>
+        <div class="skill-tags">
+          <span class="tag blue">Linux</span>
+          <span class="tag blue">Networking</span>
+          <span class="tag blue">AWS</span>
+          <span class="tag blue">Kubernetes</span>
+          <span class="tag blue">CI/CD</span>
+          <span class="tag blue">Wireshark</span>
+          <span class="tag blue">nmap</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">// Certs &amp; Training</div>
+        <div class="skill-tags">
+          <span class="tag">CompTIA Sec+</span>
+          <span class="tag">TryHackMe</span>
+          <span class="tag">HackTheBox</span>
+          <span class="tag">OSCP (pursuing)</span>
+          <span class="tag">PicoCTF</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="sec-header">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">Projects</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="projects-grid">
+
+      <a class="project-card" href="#" target="_blank">
+        <div class="proj-type security">// Security Tool</div>
+        <div class="proj-title">ReconKit</div>
+        <div class="proj-desc">Automated recon pipeline combining OSINT, subdomain enum, and port scanning into a unified dashboard with severity scoring.</div>
+        <div class="proj-stack">
+          <span>Python</span><span>Docker</span><span>Shodan API</span><span>SQLite</span>
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="#">GitHub →</a>
+          <a class="proj-link" href="#">Demo →</a>
+        </div>
+      </a>
+
+      <a class="project-card" href="#" target="_blank">
+        <div class="proj-type dev">// Full-Stack App</div>
+        <div class="proj-title">VaultPass</div>
+        <div class="proj-desc">End-to-end encrypted password manager with zero-knowledge architecture. AES-256 local encryption, PBKDF2 key derivation, browser extension.</div>
+        <div class="proj-stack">
+          <span>React</span><span>Node.js</span><span>WebCrypto</span><span>IndexedDB</span>
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="#">GitHub →</a>
+          <a class="proj-link" href="#">Live →</a>
+        </div>
+      </a>
+
+      <a class="project-card" href="#" target="_blank">
+        <div class="proj-type tool">// Research</div>
+        <div class="proj-title">CVE-2024-XXXX</div>
+        <div class="proj-desc">Discovered and responsibly disclosed an SSRF vulnerability in a popular SaaS platform. Write-up, PoC, and CVE assigned.</div>
+        <div class="proj-stack">
+          <span>Bug Bounty</span><span>SSRF</span><span>HackerOne</span>
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="#">Write-up →</a>
+          <a class="proj-link" href="#">Advisory →</a>
+        </div>
+      </a>
+
+      <a class="project-card" href="#" target="_blank">
+        <div class="proj-type dev">// CLI Tool</div>
+        <div class="proj-title">hexdump-tui</div>
+        <div class="proj-desc">Terminal-based binary analysis tool with hex/ASCII views, pattern search, entropy visualization, and file carving for forensics workflows.</div>
+        <div class="proj-stack">
+          <span>Rust</span><span>ratatui</span><span>Forensics</span>
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="#">GitHub →</a>
+          <a class="proj-link" href="#">Crate →</a>
+        </div>
+      </a>
+
+      <a class="project-card" href="#" target="_blank">
+        <div class="proj-type security">// CTF</div>
+        <div class="proj-title">CTF Writeups</div>
+        <div class="proj-desc">Collection of 40+ documented CTF solutions across pwn, crypto, web, and forensics. Published with full methodology and tooling notes.</div>
+        <div class="proj-stack">
+          <span>pwntools</span><span>GDB</span><span>CyberChef</span>
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="/blog">Read →</a>
+        </div>
+      </a>
+
+      <a class="project-card" href="#" target="_blank">
+        <div class="proj-type dev">// API / Backend</div>
+        <div class="proj-title">ThreatLens</div>
+        <div class="proj-desc">Threat intelligence aggregator pulling from VirusTotal, AbuseIPDB, and Shodan. REST API + React dashboard for IOC lookups.</div>
+        <div class="proj-stack">
+          <span>Go</span><span>PostgreSQL</span><span>Redis</span><span>React</span>
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="#">GitHub →</a>
+          <a class="proj-link" href="#">Docs →</a>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section id="achievements">
+    <div class="sec-header">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">Stats</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="ctf-grid">
+      <div class="ctf-card">
+        <span class="ctf-num" id="counter-ctf">0</span>
+        <div class="ctf-label">// CTFs Competed</div>
+      </div>
+      <div class="ctf-card">
+        <span class="ctf-num" id="counter-htb">0</span>
+        <div class="ctf-label">// HTB Machines Pwned</div>
+      </div>
+      <div class="ctf-card">
+        <span class="ctf-num" id="counter-bugs">0</span>
+        <div class="ctf-label">// Bugs Reported</div>
+      </div>
+      <div class="ctf-card">
+        <span class="ctf-num" id="counter-repos">0</span>
+        <div class="ctf-label">// Open Source Repos</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="sec-header">
+      <span class="sec-num">05</span>
+      <h2 class="sec-title">Experience</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2024 — Present</div>
+        <div class="tl-title">Security Research Intern</div>
+        <div class="tl-sub">CyberCorp LLC // Hartford, CT</div>
+        <div class="tl-desc">Conducted web application pentests, authored reports, and built internal automation tooling for vulnerability scanning pipelines.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2023 — 2024</div>
+        <div class="tl-title">Full-Stack Developer</div>
+        <div class="tl-sub">Freelance</div>
+        <div class="tl-desc">Built and shipped 8 production web apps for small businesses. Focused on clean architecture, security headers, and OWASP best practices.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2022 — 2023</div>
+        <div class="tl-title">CTF Team Lead</div>
+        <div class="tl-sub">University Cyber Club</div>
+        <div class="tl-desc">Founded and led university CTF team. Organized workshops on web exploitation, binary pwn, and cryptography. Top 5% globally on CTFtime.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST POSTS (pulled from Jekyll) -->
+  <section id="blog-preview">
+    <div class="sec-header">
+      <span class="sec-num">06</span>
+      <h2 class="sec-title">Latest Posts</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="projects-grid">
+      {% for post in site.posts limit:3 %}
+      <a class="project-card" href="{{ post.url }}">
+        <div class="proj-type tool">// {{ post.date | date: "%Y.%m.%d" }}</div>
+        <div class="proj-title">{{ post.title }}</div>
+        <div class="proj-desc">{{ post.excerpt | strip_html | truncate: 120 }}</div>
+        {% if post.tags %}
+        <div class="proj-stack">
+          {% for tag in post.tags %}<span>{{ tag }}</span>{% endfor %}
+        </div>
+        {% endif %}
+        <div class="proj-links">
+          <a class="proj-link" href="{{ post.url }}">Read →</a>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% if site.posts.size > 0 %}
+    <div style="margin-top:2rem;">
+      <a class="btn btn-outline" href="/blog">All Posts →</a>
+    </div>
+    {% endif %}
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="sec-header">
+      <span class="sec-num">07</span>
+      <h2 class="sec-title">Contact</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <p style="color:var(--muted);font-size:0.9rem;line-height:1.9;margin-bottom:1.5rem;">
+          Open to internships, research collaborations, and freelance security work. PGP key available on request.
+        </p>
+        <p style="color:var(--neon);font-size:0.8rem;letter-spacing:0.1em;">
+          &gt; ping me at:<br>
+          <span style="color:#fff;">9xns4zzhl@mozmail.com</span>
+        </p>
+      </div>
+      <div class="contact-links">
+        <a class="contact-link" href="https://github.com/mikeg1440" target="_blank">
+          <span class="contact-icon">GH</span> github.com/yourusername
+        </a>
+        <a class="contact-link" href="https://linkedin.com/in/michael-gaudreau" target="_blank">
+          <span class="contact-icon">LI</span> linkedin.com/in/yourusername
+        </a>
+        <a class="contact-link" href="https://twitter.com/mylogicbytes" target="_blank">
+          <span class="contact-icon">TW</span> @yourusername
+        </a>
+        <a class="contact-link" href="https://app.hackthebox.com/profile/mikeg1440" target="_blank">
+          <span class="contact-icon">HTB</span> HackTheBox Profile
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>

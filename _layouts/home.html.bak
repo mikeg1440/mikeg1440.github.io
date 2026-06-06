@@ -1,56 +1,833 @@
-{% include header.html %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NullByte // Portfolio</title>
+<style>
+  :root {
+    --neon: #00ff9f;
+    --neon2: #00d4ff;
+    --neon3: #ff0057;
+    --bg: #050a0e;
+    --bg2: #0a1520;
+    --bg3: #0d1e2e;
+    --text: #c9e8ff;
+    --muted: #4a7a99;
+    --border: #1a3a52;
+    --font-mono: 'Courier New', Courier, monospace;
+  }
 
-{% if site.layout == 'stacked' %}
-  <div class="container-lg py-6 p-responsive text-center">
-    {% include masthead.html metadata=true %}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    <div {% if site.style == 'dark' %}class="text-white"{% endif %}>
-      {{ content }}
-    </div>
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-mono);
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
 
-    <div class="my-6">
-      {% include projects.html %}
-    </div>
+  /* MATRIX RAIN CANVAS */
+  #matrix-canvas {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none; z-index: 0;
+    opacity: 0.07;
+  }
 
-    {% if site.topics %}
-      <div class="my-6">
-        {% include interests.html %}
-      </div>
-    {% endif %}
+  /* SCANLINE OVERLAY */
+  body::after {
+    content: '';
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,255,159,0.015) 2px, rgba(0,255,159,0.015) 4px
+    );
+    pointer-events: none; z-index: 1;
+    animation: scanmove 8s linear infinite;
+  }
 
-    {% unless posts_total == 0 %}
-      <div class="my-6">
-        {% include thoughts.html %}
-      </div>
-    {% endunless %}
+  @keyframes scanmove {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100px; }
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem;
+    height: 56px;
+    background: rgba(5,10,14,0.92);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(6px);
+  }
+
+  .nav-logo {
+    color: var(--neon); font-size: 1.1rem; font-weight: bold;
+    text-decoration: none; letter-spacing: 0.1em;
+  }
+
+  .nav-logo span { color: var(--muted); }
+
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: 0.8rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -2px; left: 0;
+    width: 0; height: 1px; background: var(--neon);
+    transition: width 0.25s;
+  }
+  .nav-links a:hover { color: var(--neon); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* MAIN */
+  main { position: relative; z-index: 2; }
+
+  section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding-top: 80px;
+    max-width: 100%;
+    padding-left: 8vw;
+  }
+
+  .hero-prompt {
+    color: var(--muted); font-size: 0.85rem; margin-bottom: 0.5rem;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-name {
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-weight: bold; line-height: 1.05;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-name .accent { color: var(--neon); text-shadow: 0 0 20px rgba(0,255,159,0.4); }
+
+  .hero-title {
+    margin-top: 1rem; font-size: 1rem;
+    color: var(--neon2); letter-spacing: 0.15em;
+  }
+
+  .hero-desc {
+    margin-top: 1.5rem;
+    max-width: 520px; font-size: 0.9rem;
+    color: var(--muted); line-height: 1.8;
+    font-family: 'Courier New', monospace;
+  }
+
+  .typed-cursor {
+    display: inline-block; width: 2px; height: 1em;
+    background: var(--neon);
+    animation: blink 0.8s infinite;
+    vertical-align: middle; margin-left: 2px;
+  }
+
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  .hero-btns { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; }
+
+  .btn {
+    padding: 0.65rem 1.5rem; font-family: var(--font-mono);
+    font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    cursor: pointer; transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--neon); color: #050a0e; border: none;
+    font-weight: bold;
+  }
+  .btn-primary:hover { background: #00ffb3; box-shadow: 0 0 16px rgba(0,255,159,0.4); }
+
+  .btn-outline {
+    background: transparent; color: var(--neon2);
+    border: 1px solid var(--neon2);
+  }
+  .btn-outline:hover { background: rgba(0,212,255,0.08); box-shadow: 0 0 12px rgba(0,212,255,0.2); }
+
+  .status-bar {
+    position: absolute; bottom: 2rem; left: 8vw;
+    display: flex; gap: 2rem; font-size: 0.75rem; color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  .status-item { display: flex; align-items: center; gap: 0.4rem; }
+  .status-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--neon); animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  /* SECTION HEADER */
+  .sec-header {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .sec-num {
+    color: var(--neon); font-size: 0.8rem; letter-spacing: 0.2em;
+    min-width: 28px;
+  }
+
+  .sec-title {
+    font-size: 1.6rem; color: #fff; letter-spacing: 0.05em;
+  }
+
+  .sec-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; align-items: start;
+  }
+
+  .about-text p { color: var(--muted); line-height: 1.9; font-size: 0.9rem; margin-bottom: 1rem; }
+  .about-text p span { color: var(--neon2); }
+
+  .terminal-box {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 4px; overflow: hidden;
+  }
+
+  .terminal-bar {
+    background: var(--bg3); padding: 0.5rem 0.75rem;
+    display: flex; align-items: center; gap: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .t-btn {
+    width: 10px; height: 10px; border-radius: 50%;
+  }
+
+  .terminal-body {
+    padding: 1rem; font-size: 0.82rem; line-height: 1.9;
+  }
+
+  .t-prompt { color: var(--neon); }
+  .t-cmd { color: #fff; }
+  .t-out { color: var(--muted); padding-left: 1rem; }
+  .t-key { color: var(--neon2); }
+  .t-val { color: var(--neon); }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+    gap: 1rem;
+  }
+
+  .skill-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    padding: 1.25rem; border-radius: 4px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .skill-card:hover {
+    border-color: var(--neon);
+    transform: translateY(-3px);
+  }
+
+  .skill-cat {
+    color: var(--neon); font-size: 0.72rem; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 0.75rem;
+  }
+
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  .tag {
+    background: rgba(0,255,159,0.06); border: 1px solid rgba(0,255,159,0.2);
+    color: var(--text); font-size: 0.75rem;
+    padding: 0.25rem 0.6rem; border-radius: 2px;
+  }
+
+  .tag.red { background: rgba(255,0,87,0.06); border-color: rgba(255,0,87,0.2); }
+  .tag.blue { background: rgba(0,212,255,0.06); border-color: rgba(0,212,255,0.2); }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    gap: 1.25rem;
+  }
+
+  .project-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 4px; padding: 1.5rem;
+    transition: all 0.2s; position: relative; overflow: hidden;
+    cursor: pointer; text-decoration: none; display: block; color: inherit;
+  }
+
+  .project-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--neon); opacity: 0; transition: opacity 0.2s;
+  }
+
+  .project-card:hover { border-color: var(--neon); transform: translateY(-3px); }
+  .project-card:hover::before { opacity: 1; }
+
+  .proj-type {
+    font-size: 0.7rem; letter-spacing: 0.18em;
+    text-transform: uppercase; margin-bottom: 0.5rem;
+  }
+
+  .proj-type.security { color: var(--neon3); }
+  .proj-type.dev { color: var(--neon2); }
+  .proj-type.tool { color: var(--neon); }
+
+  .proj-title { font-size: 1.05rem; color: #fff; margin-bottom: 0.5rem; font-weight: bold; }
+  .proj-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+
+  .proj-stack { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .proj-stack span {
+    font-size: 0.7rem; color: var(--muted);
+    border: 1px solid var(--border); padding: 0.15rem 0.45rem; border-radius: 2px;
+  }
+
+  .proj-links {
+    display: flex; gap: 0.75rem; margin-top: 1rem;
+    padding-top: 1rem; border-top: 1px solid var(--border);
+  }
+
+  .proj-link {
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--neon2); text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .proj-link:hover { color: var(--neon); }
+
+  /* CTF / ACHIEVEMENTS */
+  .ctf-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 1rem;
+  }
+
+  .ctf-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 4px; padding: 1.25rem; text-align: center;
+  }
+
+  .ctf-num {
+    font-size: 2.2rem; font-weight: bold; color: var(--neon);
+    display: block; line-height: 1;
+  }
+
+  .ctf-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.12em; margin-top: 0.5rem; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 1.5rem; }
+
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+
+  .tl-item {
+    position: relative; margin-bottom: 2rem;
+    padding-left: 1.5rem;
+  }
+
+  .tl-item::before {
+    content: ''; position: absolute; left: -1.55rem; top: 6px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--neon); border: 2px solid var(--bg);
+  }
+
+  .tl-date { font-size: 0.75rem; color: var(--neon); letter-spacing: 0.12em; margin-bottom: 0.25rem; }
+  .tl-title { font-size: 1rem; color: #fff; margin-bottom: 0.2rem; }
+  .tl-sub { font-size: 0.82rem; color: var(--neon2); margin-bottom: 0.4rem; }
+  .tl-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+
+  .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .contact-link {
+    display: flex; align-items: center; gap: 0.75rem;
+    color: var(--muted); text-decoration: none; font-size: 0.85rem;
+    padding: 0.75rem 1rem; border: 1px solid var(--border);
+    border-radius: 4px; transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--neon); color: var(--neon);
+    background: rgba(0,255,159,0.04);
+  }
+
+  .contact-icon { color: var(--neon); font-size: 1rem; width: 20px; text-align: center; }
+
+  /* FOOTER */
+  footer {
+    position: relative; z-index: 2;
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 8vw;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.75rem; color: var(--muted);
+  }
+
+  /* GLITCH */
+  .glitch {
+    position: relative;
+    animation: glitch 4s infinite;
+  }
+
+  @keyframes glitch {
+    0%,90%,100%{text-shadow:none}
+    92%{text-shadow:2px 0 var(--neon3),-2px 0 var(--neon2)}
+    94%{text-shadow:-2px 0 var(--neon3),2px 0 var(--neon2)}
+    96%{text-shadow:none}
+  }
+
+  /* SCROLL INDICATOR */
+  .scroll-hint {
+    position: absolute; bottom: 2rem; right: 8vw;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    font-size: 0.7rem; color: var(--muted); letter-spacing: 0.15em;
+  }
+
+  .scroll-arrow {
+    width: 20px; height: 20px; border-right: 1px solid var(--muted);
+    border-bottom: 1px solid var(--muted);
+    transform: rotate(45deg);
+    animation: arrowBounce 1.5s infinite;
+    margin-top: -8px;
+  }
+
+  @keyframes arrowBounce { 0%,100%{transform:rotate(45deg) translate(0,0)} 50%{transform:rotate(45deg) translate(3px,3px)} }
+
+  @media (max-width: 700px) {
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    #hero { padding-left: 1.5rem; }
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="matrix-canvas"></canvas>
+
+<nav>
+  <a class="nav-logo" href="#">NULL<span>//</span>BYTE</a>
+  <div class="nav-links">
+    <a href="#about">about</a>
+    <a href="#skills">skills</a>
+    <a href="#projects">projects</a>
+    <a href="#experience">exp</a>
+    <a href="#contact">contact</a>
   </div>
-{% else %}
-  <div class="d-md-flex min-height-full {% unless site.style == 'dark' %}border-md-bottom{% endunless %}">
-    <div class="flex-self-stretch {% if site.style == 'dark' %}bg-gray-dark{% else %}border-md-right border-gray-light bg-white{% endif %} col-md-5 col-lg-4 col-xl-3 px-4 px-md-6 px-lg-7 py-6">
-      {% include masthead.html metadata=true %}
-      {% include post-list.html %}
+</nav>
+
+<main>
+  <!-- HERO -->
+  <section id="hero" style="position:relative; max-width:100%; padding-top:80px; min-height:100vh; display:flex; flex-direction:column; justify-content:center;">
+    <div class="hero-prompt">> initialize portfolio.exe</div>
+    <h1 class="hero-name glitch">
+      YOUR<br><span class="accent">NAME</span>
+    </h1>
+    <p class="hero-title">// Security Researcher &amp; Full-Stack Developer</p>
+    <p class="hero-desc">
+      <span id="typed-text"></span><span class="typed-cursor"></span>
+    </p>
+    <div class="hero-btns">
+      <a class="btn btn-primary" href="#projects">View Projects</a>
+      <a class="btn btn-outline" href="#contact">Get In Touch</a>
     </div>
+    <div class="status-bar">
+      <div class="status-item"><div class="status-dot"></div> SYSTEMS ONLINE</div>
+      <div class="status-item">// LOC: PROVIDENCE, RI</div>
+      <div class="status-item">// AVAILABLE FOR HIRE</div>
+    </div>
+    <div class="scroll-hint">SCROLL<div class="scroll-arrow"></div></div>
+  </section>
 
-    <div class="col-md-7 col-lg-8 col-xl-9 px-4 py-6 px-lg-7 border-top border-md-top-0 bg-gray-light" {% if site.style == 'dark' %}style="background-color: #2f363d !important"{% endif %}>
-      <div class="mx-auto" style="max-width: 900px;">
-        {% unless content == ""  %}
-          <div class="f4 {% if site.style == 'dark' %}text-white{% endif %} mb-6">
-            {{ content }}
-          </div>
-        {% endunless %}
-
-        {% include projects.html %}
-
-        {% if site.topics %}
-          {% include interests.html %}
-        {% endif %}
-
-        {% unless posts_total == 0 %}
-          {% include thoughts.html %}
-        {% endunless %}
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="sec-header">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">About</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a <span>security researcher</span> and developer passionate about breaking things to understand how they work — then building them back better.</p>
+        <p>My work spans <span>penetration testing</span>, <span>CTF competitions</span>, and full-stack development. I enjoy operating at the intersection of offense and engineering.</p>
+        <p>Currently pursuing <span>OSCP</span> and contributing to open-source security tooling. Always looking for interesting problems to solve.</p>
+      </div>
+      <div class="terminal-box">
+        <div class="terminal-bar">
+          <div class="t-btn" style="background:#ff5f57;"></div>
+          <div class="t-btn" style="background:#febc2e;"></div>
+          <div class="t-btn" style="background:#28c840;"></div>
+          <span style="color:var(--muted);font-size:0.72rem;margin-left:8px;">~/whoami</span>
+        </div>
+        <div class="terminal-body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">cat about.json</span></div>
+          <div class="t-out">{</div>
+          <div class="t-out" style="padding-left:2rem;"><span class="t-key">"name"</span>: <span class="t-val">"Your Name"</span>,</div>
+          <div class="t-out" style="padding-left:2rem;"><span class="t-key">"role"</span>: <span class="t-val">"Security / Dev"</span>,</div>
+          <div class="t-out" style="padding-left:2rem;"><span class="t-key">"location"</span>: <span class="t-val">"Providence, RI"</span>,</div>
+          <div class="t-out" style="padding-left:2rem;"><span class="t-key">"ctf_rank"</span>: <span class="t-val">"Top 5%"</span>,</div>
+          <div class="t-out" style="padding-left:2rem;"><span class="t-key">"open_to"</span>: <span class="t-val">"opportunities"</span></div>
+          <div class="t-out">}</div>
+          <div style="margin-top:0.5rem;"><span class="t-prompt">$</span> <span class="typed-cursor"></span></div>
+        </div>
       </div>
     </div>
-  </div>
-{% endif %}
+  </section>
 
-{% include footer.html %}
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="sec-header">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Skills</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-cat">// Offensive Security</div>
+        <div class="skill-tags">
+          <span class="tag red">Penetration Testing</span>
+          <span class="tag red">Web App Exploits</span>
+          <span class="tag red">CTF / PWN</span>
+          <span class="tag red">Reverse Engineering</span>
+          <span class="tag red">Social Engineering</span>
+          <span class="tag red">Metasploit</span>
+          <span class="tag red">Burp Suite</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">// Development</div>
+        <div class="skill-tags">
+          <span class="tag">Python</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Rust</span>
+          <span class="tag">Go</span>
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Docker</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">// Infrastructure</div>
+        <div class="skill-tags">
+          <span class="tag blue">Linux</span>
+          <span class="tag blue">Networking</span>
+          <span class="tag blue">AWS</span>
+          <span class="tag blue">Kubernetes</span>
+          <span class="tag blue">CI/CD</span>
+          <span class="tag blue">Wireshark</span>
+          <span class="tag blue">nmap</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">// Certs & Training</div>
+        <div class="skill-tags">
+          <span class="tag">CompTIA Sec+</span>
+          <span class="tag">TryHackMe</span>
+          <span class="tag">HackTheBox</span>
+          <span class="tag">OSCP (pursuing)</span>
+          <span class="tag">PicoCTF</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="sec-header">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">Projects</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="projects-grid">
+      <a class="project-card" href="#" target="_blank">
+        <div class="proj-type security">// Security Tool</div>
+        <div class="proj-title">ReconKit</div>
+        <div class="proj-desc">Automated recon pipeline combining OSINT, subdomain enum, and port scanning into a unified dashboard with severity scoring.</div>
+        <div class="proj-stack">
+          <span>Python</span><span>Docker</span><span>Shodan API</span><span>SQLite</span>
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="#">GitHub →</a>
+          <a class="proj-link" href="#">Demo →</a>
+        </div>
+      </a>
+      <a class="project-card" href="#" target="_blank">
+        <div class="proj-type dev">// Full-Stack App</div>
+        <div class="proj-title">VaultPass</div>
+        <div class="proj-desc">End-to-end encrypted password manager with zero-knowledge architecture. AES-256 local encryption, PBKDF2 key derivation, browser extension.</div>
+        <div class="proj-stack">
+          <span>React</span><span>Node.js</span><span>WebCrypto</span><span>IndexedDB</span>
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="#">GitHub →</a>
+          <a class="proj-link" href="#">Live →</a>
+        </div>
+      </a>
+      <a class="project-card" href="#" target="_blank">
+        <div class="proj-type tool">// Research</div>
+        <div class="proj-title">CVE-2024-XXXX</div>
+        <div class="proj-desc">Discovered and responsibly disclosed an SSRF vulnerability in a popular SaaS platform. Write-up, PoC, and CVE assigned.</div>
+        <div class="proj-stack">
+          <span>Bug Bounty</span><span>SSRF</span><span>HackerOne</span>
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="#">Write-up →</a>
+          <a class="proj-link" href="#">Advisory →</a>
+        </div>
+      </a>
+      <a class="project-card" href="#" target="_blank">
+        <div class="proj-type dev">// CLI Tool</div>
+        <div class="proj-title">hexdump-tui</div>
+        <div class="proj-desc">Terminal-based binary analysis tool with hex/ASCII views, pattern search, entropy visualization, and file carving for forensics workflows.</div>
+        <div class="proj-stack">
+          <span>Rust</span><span>ratatui</span><span>Forensics</span>
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="#">GitHub →</a>
+          <a class="proj-link" href="#">Crate →</a>
+        </div>
+      </a>
+      <a class="project-card" href="#" target="_blank">
+        <div class="proj-type security">// CTF</div>
+        <div class="proj-title">CTF Writeups</div>
+        <div class="proj-desc">Collection of 40+ documented CTF solutions across pwn, crypto, web, and forensics. Published with full methodology and tooling notes.</div>
+        <div class="proj-stack">
+          <span>pwntools</span><span>GDB</span><span>CyberChef</span>
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="#">Read →</a>
+        </div>
+      </a>
+      <a class="project-card" href="#" target="_blank">
+        <div class="proj-type dev">// API / Backend</div>
+        <div class="proj-title">ThreatLens</div>
+        <div class="proj-desc">Threat intelligence aggregator pulling from VirusTotal, AbuseIPDB, and Shodan. REST API + React dashboard for IOC lookups.</div>
+        <div class="proj-stack">
+          <span>Go</span><span>PostgreSQL</span><span>Redis</span><span>React</span>
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="#">GitHub →</a>
+          <a class="proj-link" href="#">Docs →</a>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <div class="sec-header">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">Stats</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="ctf-grid">
+      <div class="ctf-card">
+        <span class="ctf-num" id="counter-ctf">0</span>
+        <div class="ctf-label">// CTFs Competed</div>
+      </div>
+      <div class="ctf-card">
+        <span class="ctf-num" id="counter-htb">0</span>
+        <div class="ctf-label">// HTB Machines Pwned</div>
+      </div>
+      <div class="ctf-card">
+        <span class="ctf-num" id="counter-bugs">0</span>
+        <div class="ctf-label">// Bugs Reported</div>
+      </div>
+      <div class="ctf-card">
+        <span class="ctf-num" id="counter-repos">0</span>
+        <div class="ctf-label">// Open Source Repos</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="sec-header">
+      <span class="sec-num">05</span>
+      <h2 class="sec-title">Experience</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2024 — Present</div>
+        <div class="tl-title">Security Research Intern</div>
+        <div class="tl-sub">CyberCorp LLC // Providence, RI</div>
+        <div class="tl-desc">Conducted web application pentests, authored reports, and built internal automation tooling for vulnerability scanning pipelines.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2023 — 2024</div>
+        <div class="tl-title">Full-Stack Developer</div>
+        <div class="tl-sub">Freelance</div>
+        <div class="tl-desc">Built and shipped 8 production web apps for small businesses. Focused on clean architecture, security headers, and OWASP best practices.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2022 — 2023</div>
+        <div class="tl-title">CTF Team Lead</div>
+        <div class="tl-sub">University Cyber Club</div>
+        <div class="tl-desc">Founded and led university CTF team. Organized workshops on web exploitation, binary pwn, and cryptography. Top 5% globally on CTFtime.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="sec-header">
+      <span class="sec-num">06</span>
+      <h2 class="sec-title">Contact</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <p style="color:var(--muted);font-size:0.9rem;line-height:1.9;margin-bottom:1.5rem;">
+          Open to internships, research collaborations, and freelance security work. PGP key available on request.
+        </p>
+        <p style="color:var(--neon);font-size:0.8rem;letter-spacing:0.1em;">
+          &gt; ping me at:<br>
+          <span style="color:#fff;">you@yourdomain.com</span>
+        </p>
+      </div>
+      <div class="contact-links">
+        <a class="contact-link" href="https://github.com" target="_blank">
+          <span class="contact-icon">GH</span> github.com/yourusername
+        </a>
+        <a class="contact-link" href="https://linkedin.com" target="_blank">
+          <span class="contact-icon">LI</span> linkedin.com/in/yourusername
+        </a>
+        <a class="contact-link" href="https://twitter.com" target="_blank">
+          <span class="contact-icon">TW</span> @yourusername
+        </a>
+        <a class="contact-link" href="#" target="_blank">
+          <span class="contact-icon">HTB</span> HackTheBox Profile
+        </a>
+        <a class="contact-link" href="#" target="_blank">
+          <span class="contact-icon">CTF</span> CTFtime Profile
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>// nullbyte — built with vim &amp; coffee</span>
+  <span style="color:var(--neon);">STATUS: <span id="uptime">ONLINE</span></span>
+</footer>
+
+<script>
+// MATRIX RAIN
+const canvas = document.getElementById('matrix-canvas');
+const ctx = canvas.getContext('2d');
+let cols, drops;
+
+function initMatrix() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  cols = Math.floor(canvas.width / 18);
+  drops = Array(cols).fill(1);
+}
+
+function drawMatrix() {
+  ctx.fillStyle = 'rgba(5,10,14,0.05)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#00ff9f';
+  ctx.font = '14px Courier New';
+  const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノ@#$%&';
+  drops.forEach((y, i) => {
+    ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * 18, y * 18);
+    if (y * 18 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+    drops[i]++;
+  });
+}
+
+initMatrix();
+window.addEventListener('resize', initMatrix);
+setInterval(drawMatrix, 50);
+
+// TYPED TEXT
+const phrases = [
+  'Ethical hacker. Bug hunter. Builder.',
+  'Turning coffee into exploits since 2020.',
+  'grep -r "vulnerabilities" /prod/',
+  'chmod 777 is never the answer.',
+  'The quieter you become, the more you can hear.',
+];
+let pi = 0, ci = 0, deleting = false;
+const el = document.getElementById('typed-text');
+
+function type() {
+  const phrase = phrases[pi];
+  if (!deleting) {
+    el.textContent = phrase.slice(0, ++ci);
+    if (ci === phrase.length) { deleting = true; setTimeout(type, 2000); return; }
+  } else {
+    el.textContent = phrase.slice(0, --ci);
+    if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+  }
+  setTimeout(type, deleting ? 40 : 70);
+}
+type();
+
+// COUNTER ANIMATION
+function animateCounter(id, target, duration) {
+  const el = document.getElementById(id);
+  const start = performance.now();
+  function update(now) {
+    const t = Math.min((now - start) / duration, 1);
+    el.textContent = Math.floor(t * target);
+    if (t < 1) requestAnimationFrame(update);
+    else el.textContent = target;
+  }
+  requestAnimationFrame(update);
+}
+
+const observer = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) {
+    animateCounter('counter-ctf', 23, 1200);
+    animateCounter('counter-htb', 47, 1400);
+    animateCounter('counter-bugs', 12, 1000);
+    animateCounter('counter-repos', 31, 1300);
+    observer.disconnect();
+  }
+}, { threshold: 0.3 });
+observer.observe(document.getElementById('achievements'));
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+// UPTIME
+let t = 0;
+setInterval(() => {
+  t++;
+  const h = String(Math.floor(t/3600)).padStart(2,'0');
+  const m = String(Math.floor((t%3600)/60)).padStart(2,'0');
+  const s = String(t%60).padStart(2,'0');
+  document.getElementById('uptime').textContent = `${h}:${m}:${s}`;
+}, 1000);
+</script>
+</body>
+</html>

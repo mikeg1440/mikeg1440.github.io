@@ -6,3 +6,5 @@ gem "jemoji"
 
 # added for additional functionality creating and publishing posts
 gem 'jekyll-compose', group: [:jekyll_plugins]
+
+gem 'bigdecimal', '>= 3.0.0'

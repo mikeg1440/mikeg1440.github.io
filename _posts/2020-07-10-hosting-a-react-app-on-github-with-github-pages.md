@@ -93,5 +93,5 @@ npm run deploy
 And that's it!  If you open a browser and navigate to `https://GITHUB-USERNAME.github.io/REPO-NAME` and you should see the app working just like it should!
 
 <div class='center-text'>
-  <img src="{{ site.baseurl }}/assets/img/react/hosted_app.png" alt='React app hosted using GitHub Pages' />
+  <img src="{{ site.baseurl }}/assets/img/react/hosted_app.png" width="100%" height="auto" alt='React app hosted using GitHub Pages' />
 </div>
