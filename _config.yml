@@ -26,7 +26,9 @@ projects:
     archived: false
     forks: true
     projects:
+    - dev-notes.md
     # - repo-name
+    
 
 # social_media:
   # behance: your_username
