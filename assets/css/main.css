@@ -21,6 +21,13 @@
     cursor: crosshair;
   }
 
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
   /* MATRIX RAIN CANVAS */
   #matrix-canvas {
     position: fixed; top: 0; left: 0;
